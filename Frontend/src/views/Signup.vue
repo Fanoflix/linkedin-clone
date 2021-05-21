@@ -24,14 +24,13 @@
           v-model="passwordCheck"
           placeholder="Retype Password"
         /><br /><br />
-        <p
-          style="color: red; font-weight: 600; font-size: 15px"
-          v-show="emailError || passError"
-          v-for="error in errorMessages"
+        <p style="color: red; font-weight: 600; font-size: 15px" v-show="emailError || passError" v-for="error in errorMessages"
           :key="error"
-          class="error"
-        >
+          class="error">
           {{ error }}
+        </p>
+        <p style="color: red; font-weight: 600; font-size: 15px" v-show="emailInUse" class="error">
+          {{ emailUseError }}
         </p>
         <button>Signup</button>
       </form>
@@ -55,21 +54,24 @@ export default {
       password: "",
       passwordCheck: "",
       errorVisibility: "hidden",
+      emailUseError: "Email is already registered. Please Retry and Submit again.",
+      emailInUse: false,
       emailError: false,
       passError: false,
       emailErrorMessage: "Please enter a valid Email.",
-      passwordErrorMessage: "Passwords do not match.",
+      passwordErrorMessage: "Passwords do not match. Please Retry and Submit again.",
       errorMessages: [],
     };
   },
   methods: {
     onSubmit() {
+      this.emailInUse = false;
       this.matchingPassword = this.checkPasswordMatch();
       if (!this.matchingPassword) {
-        console.log("password failure");
+        console.log("Password failure");
         return;
       }
-      if (!this.passError && !this.emailError) {
+      if (!this.passError && !this.emailError && this.email !='') {
         console.log("Request Sent");
         axios
           .post("http://localhost:3000/auth/signup", {
@@ -85,7 +87,9 @@ export default {
             }
           })
           .catch((err) => {
-            console.log(err);
+            if (err.response.status == 404) {
+              this.emailInUse = true;
+            }
           });
       }
     },

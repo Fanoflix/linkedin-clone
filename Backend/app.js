@@ -32,7 +32,7 @@ app.use((error, req, res, next) => {
 // DB Connection
 mongoose
   .connect(
-    process.env.DB.URI,
+    process.env.DB_URI ,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => app.listen(3000))

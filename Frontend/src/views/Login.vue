@@ -20,8 +20,7 @@
           type="text"
           v-model="password"
           placeholder="Password"
-        /><br /><br /><br /><br />
-        <button>Login</button>
+        /><br /><br />
         <p
           style="color: red; font-weight: 600; font-size: 15px"
           v-show="emailError || passError"
@@ -31,6 +30,9 @@
         >
           {{ error }}
         </p>
+
+        <button>Login</button>
+        
       </form>
 
       <p>
@@ -58,35 +60,31 @@ export default {
   },
   methods: {
     onSubmit() {
-      let responseData = "";
-      axios
-        .post("http://localhost:3000/auth/login", {
+      console.log(this.emailError + ' ' + this.passError)
+      axios.post("http://localhost:3000/auth/login", {
           email: this.email,
           password: this.password,
         })
-        .then((response) => {
-          console.log("sucess: ");
-          console.log(response);
-          if (response.statusCode === 404) {
+        .then(() => {
+        })
+        .catch((err) => {
+          console.log(err.response.status);
+          if (err.response.status == 404) {
             console.log("Wrong Email");
-            console.log(response);
             this.emailError = true;
             if (!this.errorMessages.includes(this.emailErrorMessage)) {
               this.errorMessages.push(this.emailErrorMessage);
             }
             return;
-          } else if (response.statusCode === 401) {
-            console.log("Wrong Pass");
-            console.log(response);
-            this.this.passError = true;
+          } else if (err.response.status == 401) {
+            console.log("Wrong Password");
+            this.passError = true;
             if (!this.errorMessages.includes(this.passErrorMessage)) {
               this.errorMessages.push(this.passErrorMessage);
             }
             return;
           }
         });
-
-      console.log(response);
     },
   },
   watch: {
