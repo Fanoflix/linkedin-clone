@@ -54,6 +54,7 @@ export let login = async (req, res, next) => {
       throw error;
     }
 
+    // If everything checks out, send back JWT and the info we wish to send.
     // TOKEN ===================================
     const token = jwt.sign(
       {
@@ -67,7 +68,7 @@ export let login = async (req, res, next) => {
 
     res.status(200).json({
       token: token,
-      userID: user._id.toString(),
+      _id: user._id.toString(),
       message: "Logged in Successfully",
     });
   } catch (err) {

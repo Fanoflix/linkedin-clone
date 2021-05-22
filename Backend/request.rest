@@ -23,10 +23,11 @@ Content-Type: application/json
 
 ###
 
-POST http://localhost:3000/auth/login
+POST http://localhost:3000/post
 Content-Type: application/json
 
 {
-    "email": "ammar@as123.com",
-    "password": "123"
+    "userId": "60a6b3cc38b59d0ab8da531e",
+    "content": "Something something post should be ok"
 }
+

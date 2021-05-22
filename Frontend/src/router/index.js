@@ -3,6 +3,7 @@ import Home from "../views/Home.vue";
 import NotFound from "../views/NotFound.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
+import Post from "../components/Post.vue"
 
 const routes = [
   {
@@ -20,7 +21,11 @@ const routes = [
     name: "Login",
     component: Login
   },
-
+  {
+    path: '/post',
+    name: "Post",
+    component: Post
+  },
   { path: "/:notFound(.*)", component: NotFound },
 ];
 

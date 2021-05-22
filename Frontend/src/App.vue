@@ -4,12 +4,13 @@
       
     <router-link to="/signup">Sign Up</router-link>
     <router-link to="/login">Log In</router-link>
+    <router-link to="/post">Post</router-link>
     <router-view></router-view>
   </section>
 </template>
 
 <script>
-import TheNavBar from './components/NavBar/TheNavBar.vue';
+import TheNavBar from './components/TheNavBar.vue';
 export default {
   name: "App",
   components: {TheNavBar},
