@@ -1,9 +1,13 @@
 import { createRouter, createWebHistory } from "vue-router";
+
+// Views
 import Home from "../views/Home.vue";
 import NotFound from "../views/NotFound.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
-import Post from "../components/Post.vue"
+import Feed from "../views/Feed.vue"
+
+// Components (Remove all when you're done prototyping)
 
 const routes = [
   {
@@ -22,10 +26,12 @@ const routes = [
     component: Login
   },
   {
-    path: '/post',
-    name: "Post",
-    component: Post
+    path: '/feed',
+    name: "Feed",
+    component: Feed
   },
+  
+  // COMPONENT PROTOTYPING
   { path: "/:notFound(.*)", component: NotFound },
 ];
 

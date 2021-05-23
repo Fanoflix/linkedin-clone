@@ -1,10 +1,6 @@
 import User from "../models/user.js";
 import Post from "../models/post.js";
 import mongoose from "mongoose";
-// Make A post and add to the DB under user's post
-
-// find the user trying to make the request (or just store it in the vue store)
-// add a post object with - user ID, content
 
 export let makePost = async (req, res, next) => {
 //   const userId = mongoose.Types.ObjectId(req.body.userId);
@@ -35,3 +31,11 @@ export let makePost = async (req, res, next) => {
     next(err);
   }
 };
+
+export let getPosts = async (req, res, next) => {
+  const posts = await Post.find({})
+  console.log(posts)
+  res.json({
+    posts
+  })
+}

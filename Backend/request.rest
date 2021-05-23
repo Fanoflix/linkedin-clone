@@ -1,4 +1,12 @@
+// Get all Users
 GET http://localhost:3000/users
+
+###
+
+// Get all Posts
+GET http://localhost:3000/post/getPosts
+
+
 
 ###
 

@@ -13,7 +13,7 @@
             @mouseleave="hover = false"
             mode="out-in"
           >
-            <img key="1" v-if="$route.name != 'Home'" alt="-A-logo" />
+            <img key="1" v-if="$route.name != 'Home'" alt="logo" />
             <img key="2" v-else style="transform: scale(1.32)" alt="-A-logo" />
           </transition>
         </span>
@@ -23,9 +23,11 @@
     <div class="nav-elements">
       <!-- If not logged in -->
       <router-link to="/login"> Log In </router-link>
+      <router-link to="/signup"> Signup </router-link>
 
       <!-- If logged in -->
-      <router-link to="/contact"> OR Name </router-link>
+      <!-- <router-link to="/profile"> if LI Name </router-link> -->
+      <router-link to="/feed"> My Feed </router-link>
     </div>
   </section>
 </template>
@@ -40,6 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
+  font-family: "Montserrat", sans-serif;
   display: flex;
   background-color: rgb(0, 0, 0);
   width: 100%;
@@ -64,31 +67,23 @@ export default {
   a {
     font-weight: bold;
     color: #ffffff;
-    border-bottom: rgb(15, 15, 15) 2px solid;
+    border-bottom: rgb(0, 0, 0) 6px solid inset;
     text-decoration: none;
     display: flex;
+    will-change: border;
     align-items: center;
     justify-content: center;
     justify-items: center;
     width: 100px;
     height: 100px;
-    transition: border 0.2s linear;
+    transition: all 0.15s linear;
 
-    &:hover {
-      border-bottom: rgb(75, 75, 75) 2px solid;
-      transition: border 0.2s linear;
-
-      &.logo {
-        background-color: rgb(15, 15, 15);
-        border-bottom: none !important;
-      }
-    }
     &.router-link-exact-active {
-      transition: border 0.2s linear;
-      border-bottom: white 2px solid !important;
+      transition: border 0.15s linear;
+      border-bottom: white 6px solid;
 
       &.logo {
-        border-bottom: none !important;
+        border-bottom: none;
       }
     }
   }

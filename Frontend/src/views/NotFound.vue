@@ -20,9 +20,9 @@ section {
   margin-top: 100px;
   font-family: "Montserrat", sans-serif;
   font-size: 90px;
-  font-weight: 100;
+  font-weight: 400;
   text-align: center;
-  color: red;
+  color: rgb(0, 0, 0);
 
   div {
     width: 100%;
@@ -30,7 +30,7 @@ section {
     font-size: 100%;
     align-content: center;
     vertical-align: middle;
-    text-shadow: 7px 7px 6px black;
+    text-shadow: 12px 40px 12px black;
 
     p {
       color: rgb(82, 82, 82);
@@ -40,7 +40,7 @@ section {
 
       span {
         color: rgb(255, 255, 255);
-        text-shadow: 0px 0px 5px red;
+        text-shadow: 0px 0px 5px rgb(0, 0, 0),0px 0px 6px rgb(0, 0, 0), 0px 0px 7px rgb(0, 0, 0);
       }
     }
   }
@@ -48,7 +48,6 @@ section {
   img {
     width: 100%;
     margin-top: 50px;
-    opacity: 0.4;
     background: transparent !important;
   }
 }

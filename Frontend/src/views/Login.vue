@@ -1,10 +1,10 @@
 <template>
   <section>
     <div class="panel">
-      <div class="detail">LinkedIn Account Login</div>
+      <div class="detail">LinkedOut Account Login</div>
     </div>
     <div class="content">
-      <h1 class="title">LinkedIn</h1>
+      <h1 class="title">LinkedOut</h1>
 
       <h2>Log In</h2>
       <p style="margin-top: -10px; margin-bottom: 40px">
@@ -17,7 +17,7 @@
         <input type="text" v-model="email" placeholder="Email" /><br />
         Password <br />
         <input
-          type="text"
+          type="password"
           v-model="password"
           placeholder="Password"
         /><br /><br />
@@ -32,7 +32,6 @@
         </p>
 
         <button>Login</button>
-        
       </form>
 
       <p>
@@ -60,15 +59,13 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log(this.emailError + ' ' + this.passError)
-      axios.post("http://localhost:3000/auth/login", {
+      axios
+        .post("http://localhost:3000/auth/login", {
           email: this.email,
           password: this.password,
         })
-        .then(() => {
-        })
+        .then(() => {})
         .catch((err) => {
-          console.log(err.response.status);
           if (err.response.status == 404) {
             console.log("Wrong Email");
             this.emailError = true;
@@ -85,6 +82,9 @@ export default {
             return;
           }
         });
+
+      this.password = ''
+      this.passwordCheck = ''
     },
   },
   watch: {
@@ -159,38 +159,6 @@ section {
 
     .inputs {
       font-size: 15px;
-
-      input {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 600;
-        color: black;
-        &::placeholder {
-          font-weight: 400;
-        }
-        height: 25px;
-        width: 300px;
-        margin: 5px;
-        padding: 10px;
-        border: 2px solid;
-      }
-
-      button {
-        font-weight: 600;
-        height: 50px;
-        width: 323px;
-        border: 2px solid black;
-        background-color: black;
-        color: white;
-
-        &:hover {
-          background-color: rgb(3, 16, 0);
-          color: rgb(255, 255, 255);
-        }
-        &:active {
-          background-color: rgb(255, 255, 255);
-          color: rgb(0, 0, 0);
-        }
-      }
     }
 
     .title {
