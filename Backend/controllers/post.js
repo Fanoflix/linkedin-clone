@@ -34,7 +34,6 @@ export let makePost = async (req, res, next) => {
 
 export let getPosts = async (req, res, next) => {
   const posts = await Post.find({})
-  console.log(posts)
   res.json({
     posts
   })

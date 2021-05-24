@@ -22,12 +22,12 @@
 
     <div class="nav-elements">
       <!-- If not logged in -->
-      <router-link to="/login"> Log In </router-link>
-      <router-link to="/signup"> Signup </router-link>
+      <router-link class="element" to="/login"> Log In </router-link>
+      <router-link class="element" to="/signup"> Signup</router-link>
 
       <!-- If logged in -->
-      <!-- <router-link to="/profile"> if LI Name </router-link> -->
-      <router-link to="/feed"> My Feed </router-link>
+      <router-link class="element" to="/profile"> Name </router-link>
+      <router-link class="element" to="/feed"> Feed </router-link>
     </div>
   </section>
 </template>
@@ -48,13 +48,12 @@ export default {
   width: 100%;
   flex-direction: row;
   max-width: none;
-  height: 100px;
+  height: 50px;
   justify-content: center;
   align-items: center;
   user-select: none;
 
   .logo {
-    margin-left: 8%;
     width: 100px;
     height: 100%;
     overflow: visible;
@@ -62,30 +61,13 @@ export default {
     white-space: nowrap;
     border-bottom: transparent !important;
     text-align: center;
-  }
-
-  a {
-    font-weight: bold;
-    color: #ffffff;
-    border-bottom: rgb(0, 0, 0) 6px solid inset;
-    text-decoration: none;
-    display: flex;
-    will-change: border;
     align-items: center;
     justify-content: center;
     justify-items: center;
+    vertical-align: center;
+    margin: 0 auto;
+    text-decoration: none;
     width: 100px;
-    height: 100px;
-    transition: all 0.15s linear;
-
-    &.router-link-exact-active {
-      transition: border 0.15s linear;
-      border-bottom: white 6px solid;
-
-      &.logo {
-        border-bottom: none;
-      }
-    }
   }
 
   .nav-elements {
@@ -93,8 +75,34 @@ export default {
     flex-direction: row-reverse;
     max-width: none;
     width: 80%;
+    width: 400px;
     align-items: center;
-    margin-right: 8%;
+    margin: 0 auto;
+  }
+
+  a {
+    margin: 0 auto;
+    font-weight: bold;
+    color: #ffffff;
+    height: 50px;
+    border-bottom: rgb(0, 0, 0) 2px solid inset;
+    text-decoration: none;
+    display: flex;
+    will-change: border;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 100px;
+    transition: all 0.15s linear;
+
+    &.router-link-exact-active {
+      transition: border 0.15s linear;
+      border-bottom: solid 4px rgb(0, 255, 106) ;
+
+      &.logo {
+        border-bottom: none;
+      }
+    }
   }
 }
 </style>

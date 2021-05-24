@@ -6,6 +6,7 @@ import NotFound from "../views/NotFound.vue";
 import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Feed from "../views/Feed.vue"
+import Profile from "../views/Profile.vue"
 
 // Components (Remove all when you're done prototyping)
 
@@ -29,6 +30,11 @@ const routes = [
     path: '/feed',
     name: "Feed",
     component: Feed
+  },
+  {
+    path: '/profile',
+    name: "Profile",
+    component: Profile
   },
   
   // COMPONENT PROTOTYPING

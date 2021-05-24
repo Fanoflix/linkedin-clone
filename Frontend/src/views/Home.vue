@@ -21,7 +21,7 @@
     <!-- IF NOT LOGGED IN -->
     <button @click.prevent="goToSignup()">get started</button>
     <!-- ELSE -->
-      <!-- Button to "post" link  -->
+    <!-- Button to "post" link  -->
   </div>
 </template>
 
@@ -74,10 +74,13 @@ p {
   position: fixed;
   top: 50%;
   left: 50%;
-  background-color: rgb(112, 112, 112);
-  border: dotted 2px solid;
+  box-shadow: -1px 1px 1px 0px rgba($color: #00c3ff, $alpha: 0.5),
+    -3px 3px 1px 0px rgba($color: #ff00a2, $alpha: 0.5),
+    -6px 6px 1px 0px rgba($color: #15ff00, $alpha: 0.5);
+  background-color: rgb(0, 0, 0);
+  border: 1px ridge;
   height: 450px;
-  width: 2px;
+  width: 4px;
   margin: -100px -1px;
 }
 .step1 {
@@ -117,30 +120,34 @@ p {
 }
 
 button {
-  position: fixed;
-
   // Centering
+  position: fixed;
   top: 72%;
   left: 67%;
   height: 60px;
   width: 150px;
   margin: -30px -200px;
-  border: 3px solid rgb(0, 0, 0);
+  border: 4px solid rgb(0, 0, 0);
   font-weight: 600;
-  color: rgb(123, 123, 123);
+  color: rgb(0, 0, 0);
 
   will-change: border;
-  transition: all 1s ease-in-out;
-  box-shadow: -8px 8px 0px rgba($color: #00e5ff, $alpha: 1.0), 6px -6px 0px rgba($color: #ff00a2, $alpha: 0.8), 15px 18px 0px rgba($color: #15ff00, $alpha: 0.6);
+  transition: all 0.6s ease-in-out, background-color 0.05s linear,
+    box-shadow 0.3s ease-in;
+  box-shadow: -8px 8px 0px rgba($color: #00e5ff, $alpha: 0.35),
+    6px -6px 0px rgba($color: #ff00a2, $alpha: 0.35),
+    15px 18px 0px rgba($color: #15ff00, $alpha: 0.35);
 
   &:hover {
-    transition: all 0.15s ease-in-out;
+    transition: all 0.15s ease-in-out, background-color 0.1s linear;
     font-weight: 1000;
     color: white;
     border-color: rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
     transform: translate(5px, -5px);
-    box-shadow: -8px 8px 10px 0px rgba($color: #00e5ff, $alpha: 1.0), 6px -6px 10px 0px rgba($color: #ff00a2, $alpha: 0.8), 15px 18px 10px 0px rgba($color: #15ff00, $alpha: 0.6);
+    box-shadow: -8px 8px 10px 0px rgba($color: #00e5ff, $alpha: 0.35),
+      6px -6px 10px 0px rgba($color: #ff00a2, $alpha: 0.35),
+      15px 18px 10px 0px rgba($color: #15ff00, $alpha: 0.35);
   }
 
   background-color: white;

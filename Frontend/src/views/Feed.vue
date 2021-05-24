@@ -7,7 +7,10 @@
     </section> -->
     <post
       class="item post"
-      :content="content+'ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),'"
+      :content="
+        content +
+        'ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),'
+      "
       author="Ammar"
       time="24 mins ago"
     /><post
@@ -70,7 +73,14 @@ export default {
     padding: 20px;
     margin-top: 25px;
     border-radius: 15px;
-    background-image: linear-gradient(20deg, rgb(240, 240, 240), rgb(255, 255, 255), rgba(236, 236, 236, 0.631));
+    background-image: linear-gradient(
+      17deg,
+      rgb(240, 240, 240),
+      rgb(255, 255, 255),
+      rgba(236, 236, 236, 0.631)
+    );
+    border-bottom: 4px solid rgba(0, 0, 0, 0.05);
+    border-right: 4px solid rgba(0, 0, 0, 0.1);
 
     .create {
       margin-top: 25px;
