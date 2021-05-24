@@ -4,9 +4,8 @@
       <div class="detail">LinkedOut Account Login</div>
     </div>
     <div class="content">
-      <h1 class="title">LinkedOut</h1>
 
-      <h2>Log In</h2>
+      <h1 class="title">Log In</h1>
       <p style="margin-top: -10px; margin-bottom: 40px">
         Fill in your Account Information.
       </p>
@@ -153,9 +152,6 @@ section {
     height: 100%;
     font-size: 100px;
 
-    h1 {
-      margin-bottom: -20px;
-    }
 
     .inputs {
       font-size: 15px;
@@ -167,6 +163,7 @@ section {
       font-family: "Roboto Slab", serif;
       font-weight: 1000;
       letter-spacing: -1px;
+      margin-bottom: 10px;
     }
 
     h2 {
