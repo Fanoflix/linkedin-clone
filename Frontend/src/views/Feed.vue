@@ -41,6 +41,8 @@
 </template>
 
 <script>
+// import axios from "axios";
+
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
 
@@ -52,6 +54,11 @@ export default {
       content:
         "SO i was trying to write this long message, but then I went otun dercity but there was this guy with a hanging jaw",
     };
+  },
+  mounted() {
+    // axios.get("http://localhost:3000/post/getConPosts").then((res) => {
+    //   console.log(res.data);
+    // });
   },
 };
 </script>

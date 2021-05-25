@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="panel">
-      <div class="detail">LinkedOut Account Signup</div>
+      <div class="detail" @click="doit()">LinkedOut Account Signup</div>
     </div>
     <div class="content">
       <h1 class="title">Signup</h1>
@@ -16,19 +16,31 @@
         Email<br />
         <input type="text" v-model="email" placeholder="Email" /><br />
         Password<br />
-        <input type="password" v-model="password" placeholder="Password" /><br />
+        <input
+          type="password"
+          v-model="password"
+          placeholder="Password"
+        /><br />
         Retype Password<br />
         <input
           type="password"
           v-model="passwordCheck"
           placeholder="Retype Password"
         /><br /><br />
-        <p style="color: red; font-weight: 600; font-size: 15px" v-show="emailError || passError" v-for="error in errorMessages"
+        <p
+          style="color: red; font-weight: 600; font-size: 15px"
+          v-show="emailError || passError"
+          v-for="error in errorMessages"
           :key="error"
-          class="error">
+          class="error"
+        >
           {{ error }}
         </p>
-        <p style="color: red; font-weight: 600; font-size: 15px" v-show="emailInUse" class="error">
+        <p
+          style="color: red; font-weight: 600; font-size: 15px"
+          v-show="emailInUse"
+          class="error"
+        >
           {{ emailUseError }}
         </p>
         <button>Signup</button>
@@ -53,12 +65,14 @@ export default {
       password: "",
       passwordCheck: "",
       errorVisibility: "hidden",
-      emailUseError: "Email is already registered. Please Retry and Submit again.",
+      emailUseError:
+        "Email is already registered. Please Retry and Submit again.",
       emailInUse: false,
       emailError: false,
       passError: false,
       emailErrorMessage: "Please enter a valid Email.",
-      passwordErrorMessage: "Passwords do not match. Please Retry and Submit again.",
+      passwordErrorMessage:
+        "Passwords do not match. Please Retry and Submit again.",
       errorMessages: [],
     };
   },
@@ -70,7 +84,7 @@ export default {
         console.log("Password failure");
         return;
       }
-      if (!this.passError && !this.emailError && this.email !='') {
+      if (!this.passError && !this.emailError && this.email != "") {
         console.log("Request Sent");
         axios
           .post("http://localhost:3000/auth/signup", {
@@ -92,12 +106,23 @@ export default {
           });
       }
 
-      this.name = ''
-      this.email = ''
-      this.password = ''
-      this.passwordCheck = ''
-      this.emailError = false
+      this.name = "";
+      this.email = "";
+      this.password = "";
+      this.passwordCheck = "";
+      this.emailError = false;
     },
+
+    doit() {
+      let storedData = {
+        token: this.$store.getters.authToken,
+        id: this.$store.getters.authId,
+        isAuth: this.$store.getters.isAuth
+      };
+      console.log(storedData);
+      return storedData;
+    },
+
     checkPasswordMatch() {
       if (this.password !== this.passwordCheck) {
         this.passError = true;

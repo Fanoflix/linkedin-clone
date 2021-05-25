@@ -4,12 +4,18 @@
     <h3 class="time">{{ time }}</h3>
     <p class="divider">_______________________________________________</p>
     <p class="content">{{ content }}</p>
+    <p class="content likes" @click="likePost()"> 👍 {{ count }}</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["content", "author", "time"],
+  props: ["content", "author", "time", "count"],
+  methods: {
+    likePost() {
+      // Like post request
+    }
+  }
 };
 </script>
 
@@ -46,5 +52,15 @@ export default {
   margin-top: 15px;
   font-size: 15%;
   font-weight: 400;
+}
+
+.likes {
+  width: 10px;
+  position: relative;
+  vertical-align: bottom;
+
+  &:hover{
+    cursor: pointer;
+  }
 }
 </style>

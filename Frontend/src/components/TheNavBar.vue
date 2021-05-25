@@ -1,9 +1,9 @@
 <template>
   <!-- Header -->
-  <section id="nav">
+  <section id="nav" @click="test()">
     <!-- Link to Home + Logo  -->
 
-    <div class="logo">
+    <div class="logo element">
       <!-- Logo takes to /home -->
       <router-link class="logo" to="/">
         <span class="svg">
@@ -13,29 +13,47 @@
             @mouseleave="hover = false"
             mode="out-in"
           >
-            <img key="1" v-if="$route.name != 'Home'" alt="logo" />
-            <img key="2" v-else style="transform: scale(1.32)" alt="-A-logo" />
+            <!-- <img key="1" v-if="$route.name != 'Home'" alt="logo" />
+            <img key="2" v-else style="transform: scale(1.32)" alt="-A-logo" /> -->
+
+            <div key="1" v-if="$route.name != 'Home'">🔍💻</div>
+            <div key="2" v-else style="transform: scale(1.32)">🔍💻</div>
           </transition>
         </span>
       </router-link>
     </div>
 
-    <div class="nav-elements">
-      <!-- If not logged in -->
-      <router-link class="element" to="/login"> Log In </router-link>
-      <router-link class="element" to="/signup"> Signup</router-link>
+    <!-- <div class="nav-elements"> -->
+    <!-- If logged in -->
+    <p class="element" v-if="isLoggedIn" @click="logout()">Logout</p>
+      <router-link v-if="isLoggedIn" class="element" to="/profile"> Name </router-link>
+      <router-link v-if="isLoggedIn" class="element" to="/feed"> Feed </router-link>
 
-      <!-- If logged in -->
-      <router-link class="element" to="/profile"> Name </router-link>
-      <router-link class="element" to="/feed"> Feed </router-link>
-    </div>
+    <!-- If not logged in -->
+      <router-link v-if="!isLoggedIn" class="element" to="/login"> Log In </router-link>
+      <router-link v-if="!isLoggedIn" class="element" to="/signup"> Signup</router-link>
+    <!-- </div> -->
   </section>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      // isLoggedIn: false
+    };
+  },
+  methods: {
+    logout() {
+      this.$store.commit("setAuthData", { token: "", id: "", isAuth: false });
+      console.log("Logging Out");
+      this.$router.push("/");
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuth;
+    }
   },
 };
 </script>
@@ -81,8 +99,9 @@ export default {
     margin: 0 auto;
   }
 
-  a {
-    margin: 0 auto;
+  .element {
+    cursor: pointer;
+    margin: 0 20px;
     font-weight: bold;
     color: #ffffff;
     height: 50px;
@@ -98,7 +117,7 @@ export default {
 
     &.router-link-exact-active {
       transition: border 0.15s linear;
-      border-bottom: solid 4px rgb(0, 255, 106) ;
+      border-bottom: solid 4px rgb(0, 255, 106);
 
       &.logo {
         border-bottom: none;

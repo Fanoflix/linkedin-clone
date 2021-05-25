@@ -1,10 +1,9 @@
 <template>
   <section>
     <div class="panel">
-      <div class="detail">LinkedOut Account Login</div>
+      <div class="detail" >LinkedOut Account Login</div>
     </div>
     <div class="content">
-
       <h1 class="title">Log In</h1>
       <p style="margin-top: -10px; margin-bottom: 40px">
         Fill in your Account Information.
@@ -63,7 +62,17 @@ export default {
           email: this.email,
           password: this.password,
         })
-        .then(() => {})
+        .then((res) => {
+          if (res.status == 200) {
+            console.log("Authenticated");
+            this.$store.commit("setAuthData", {
+              token: res.data.token,
+              id: res.data._id,
+              isAuth: true
+            });
+            this.$router.push("/feed");
+          }
+        })
         .catch((err) => {
           if (err.response.status == 404) {
             console.log("Wrong Email");
@@ -82,8 +91,8 @@ export default {
           }
         });
 
-      this.password = ''
-      this.passwordCheck = ''
+      this.password = "";
+      this.passwordCheck = "";
     },
   },
   watch: {
@@ -151,7 +160,6 @@ section {
     box-sizing: border-box;
     height: 100%;
     font-size: 100px;
-
 
     .inputs {
       font-size: 15px;

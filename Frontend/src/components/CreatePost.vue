@@ -26,6 +26,7 @@ export default {
   },
   methods: {
     createPost() {
+      // Create a post
       console.log(this.content);
       if (this.content !== "") {
         axios.post("http://localhost:3000/post", {
