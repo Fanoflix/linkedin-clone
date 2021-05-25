@@ -59,7 +59,7 @@ export let login = async (req, res, next) => {
     const token = jwt.sign(
       {
         email: user.email,
-        userID: user._id.toString(),
+        userId: user._id.toString(),
       },
       "secretkey",
       { expiresIn: "1h" }

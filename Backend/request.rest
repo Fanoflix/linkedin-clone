@@ -1,12 +1,6 @@
 // Get all Users
 GET http://localhost:3000/users
 
-###
-
-// Get all Posts
-GET http://localhost:3000/post/getPosts
-
-
 
 ###
 
@@ -14,8 +8,8 @@ POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
-    "email": "1anything@email.com",
-    "name": "Ammar",
+    "email": "mussab@a.com",
+    "name": "Mussab",
     "password": "123"
 }
 
@@ -25,17 +19,56 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "ammar@123.com",
+    "email": "mussab@a.com",
     "password": "123"
 }
 
 ###
 
+PUT http://localhost:3000/users/connect
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxODg5NTYzLCJleHAiOjE2MjE4OTMxNjN9.WHCvLglgPx4pfl42XjQjAXd9cC2uGZGj4DJUyacmLZU
+
+{
+    "connectId" : "60ac11f8f3a76824c8fb9823"
+}
+
+
+
+/// =========== POSTS =============
+
+###
+
+// Create Post
 POST http://localhost:3000/post
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+
+{
+    "content": "ammar's post # 3"
+}
+
+###
+
+// Get all Posts
+GET http://localhost:3000/post/getUserPosts
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+
+###
+
+GET http://localhost:3000/post/getConPosts
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+
+###
+
+PUT http://localhost:3000/post/likePost
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
 Content-Type: application/json
 
 {
-    "userId": "60a6b3cc38b59d0ab8da531e",
-    "content": "Something something post should be ok"
+    "postId" : "60ac122bf3a76824c8fb9825"
 }
+
+
+
 

@@ -42,6 +42,7 @@ export default {
 
 <style lang="scss" scoped>
 #nav {
+  overflow: hidden;
   font-family: "Montserrat", sans-serif;
   display: flex;
   background-color: rgb(0, 0, 0);
