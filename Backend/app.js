@@ -1,7 +1,7 @@
 import express from "express";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js";
-import postRoutes from "./routes/post.js"
+import postRoutes from "./routes/posts.js"
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
@@ -14,16 +14,16 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PUT, PATCH, DELETE"
+    "GET, POST, PUT, PATCH, DELETE, OPTIONS"
   );
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization,  X-Auth-Token");
   next();
 });
 
 // Routes
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-app.use("/post", postRoutes)
+app.use("/posts", postRoutes)
 
 
 app.use((error, req, res, next) => {

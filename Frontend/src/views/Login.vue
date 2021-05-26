@@ -67,7 +67,8 @@ export default {
             console.log("Authenticated");
             this.$store.commit("setAuthData", {
               token: res.data.token,
-              id: res.data._id,
+              user: res.data.user,
+              id: res.data.user._id,
               isAuth: true
             });
             this.$router.push("/feed");
@@ -93,6 +94,14 @@ export default {
 
       this.password = "";
       this.passwordCheck = "";
+
+      let storedData = {
+        token: this.$store.getters.authToken,
+        id: this.$store.getters.authId,
+        isAuth: this.$store.getters.isAuth
+      };
+      console.log(storedData);
+      return storedData;
     },
   },
   watch: {

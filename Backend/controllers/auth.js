@@ -68,7 +68,7 @@ export let login = async (req, res, next) => {
 
     res.status(200).json({
       token: token,
-      _id: user._id.toString(),
+      user: user,
       message: "Logged in Successfully",
     });
   } catch (err) {

@@ -2,46 +2,31 @@
   <div class="feed">
     <create-post class="item create" />
 
-    <!-- <section class="posts" v-for="post in posts" key="post">
-        
-    </section> -->
-    <post
-      class="item post"
-      :content="
-        content +
-        'ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),ddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),'
-      "
-      author="Ammar"
-      time="24 mins ago"
-    /><post
-      class="item post"
-      :content="content"
-      author="Ammar"
-      time="24 mins ago"
-    /><post
-      class="item post"
-      :content="content"
-      author="Ammar"
-      time="24 mins ago"
-    /><post
-      class="item post"
-      :content="content"
-      author="Ammar"
-      time="24 mins ago"
-    /><post
-      class="item post"
-      :content="
-        content +
-        'ashdashdashdashdashdha dashd dashd dashddashd dashasdasdasdasssssssssssssssssssssssssssssssssss sssssssssssssssssssssdddddddddddddddddddddddddddsh dddddsh dddddshdddddsh dddddsh rgb(240, 240, 240),rgb(240, 240, 240),rgb(240, 240, 240),'
-      "
-      author="Ammar"
-      time="24 mins ago"
-    />
+    <section class="posts" v-for="post in conPosts" :key="post._id">
+      <post
+        class="item post"
+        :id="post._id"
+        :author="post.author.name"
+        :likes="post.count"
+        :content="post.content"
+        :time="post.createdAt"
+      />
+      <section class="posts" v-for="post in userPosts" :key="post._id">
+        <post
+          class="item post"
+          :id="post._id"
+          :author="post.author.name"
+          :likes="post.count"
+          :content="post.content"
+          :time="post.createdAt"
+        />
+      </section>
+    </section>
   </div>
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 
 import CreatePost from "../components/CreatePost";
 import Post from "../components/Post";
@@ -51,14 +36,56 @@ export default {
   components: { CreatePost, Post },
   data() {
     return {
-      content:
-        "SO i was trying to write this long message, but then I went otun dercity but there was this guy with a hanging jaw",
+      content: "",
+      userPosts: {},
+      conPosts: {},
     };
   },
+  methods: {
+    getConPosts() {
+      axios
+        .get("http://localhost:3000/posts/getConPosts", {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then((res) => {
+          this.conPosts = res.data.posts;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getUserPosts() {
+      axios
+        .get("http://localhost:3000/posts/getUserPosts", {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then((res) => {
+          this.userPosts = res.data.posts;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
   mounted() {
-    // axios.get("http://localhost:3000/post/getConPosts").then((res) => {
-    //   console.log(res.data);
-    // });
+    if (!this.isLoggedIn) {
+      this.$router.push("/");
+    } else {
+      this.getConPosts();
+      this.getUserPosts();
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuth;
+    },
+    token() {
+      return this.$store.getters.authToken;
+    },
   },
 };
 </script>

@@ -1,7 +1,6 @@
 import User from "../models/user.js";
 import Post from "../models/post.js";
 import mongoose from "mongoose";
-import post from "../models/post.js";
 
 export let makePost = async (req, res, next) => {
   const userId = req.userId;
@@ -22,7 +21,7 @@ export let makePost = async (req, res, next) => {
     // adding post
     const post = new Post({
       author: userId,
-      content,
+      content
     });
 
     const result = await post.save();
@@ -30,7 +29,7 @@ export let makePost = async (req, res, next) => {
     user.posts.push(result._id);
     await user.save();
 
-    res.status(201).json({ message: "Posted for: " + user._id });
+    // res.status(201).json({ message: "Posted for: " + user._id });
   } catch (err) {
     next(err);
   }
@@ -79,8 +78,8 @@ export let getUserPosts = async (req, res, next) => {
     }).populate("author", "name");
 
     res.json({
-      posts,
-      numOfLikes: posts.count,
+      posts
+      // numOfLikes: posts.count,
     });
   } catch (err) {
     console.log(err);
@@ -104,8 +103,8 @@ export let getConPosts = async (req, res, next) => {
     }).populate("author", "name");
 
     res.json({
-      posts,
-      numOfLikes: posts.count,
+      posts
+      // numOfLikes: posts.count,
     });
   } catch (err) {
     console.log(err);

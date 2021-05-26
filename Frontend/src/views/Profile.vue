@@ -1,26 +1,114 @@
 <template>
   <section class="container">
-    <h1 class="margin-bot name">Muhammad Ammar</h1>
+    <h1 class="margin-bot name">{{ name }}</h1>
 
-    <p class="margin-bot connections">500+ connections</p>
+    <p class="margin-bot connections">{{ connections }} connection(s)</p>
 
     <p class="divider">___________________</p>
 
-    <p class="margin-bot bio">Aspiring brother trying to do brotherly things</p>
+    <p class="margin-bot bio">{{ bio }}</p>
 
-    <p class="divider">___________________ </p>
-    <div class="margin-bot resume">Ammar's Portfolio: <span class="fileColor">Resume.pdf</span> </div>
+    <p class="divider">___________________</p>
+    <div class="margin-bot resume">
+      {{ name }}'s Portfolio: <span class="fileColor">Resume.pdf</span>
+    </div>
+    <br />
+    <p class="connections">Add or Edit Bio</p>
+    <form @submit.prevent="addBio()">
+      <input type="text" v-model="newBio" />
+      <button>Add</button>
+    </form>
   </section>
 </template>
 
 <script>
-export default {
-  mounted() {
-    console.log('mounted')
-  },
-}
-</script>
+import axios from "axios";
 
+export default {
+  data() {
+    return {
+      newBio: "",
+      bio: "",
+      skills: "",
+      connections: 0,
+      connectionsList: {},
+    };
+  },
+  mounted() {
+    if (!this.isLoggedIn) {
+      this.$router.push("/");
+    } else {
+      this.getConnections();
+      this.getBio();
+    }
+  },
+  methods: {
+    getConnections() {
+      axios
+        .get("http://localhost:3000/users/getConnections", {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then((res) => {
+          this.connections = res.data.connections.length;
+          this.connectionsList = res.data.connections;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getBio() {
+      axios
+        .get("http://localhost:3000/users/getBio", {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then((res) => {
+          this.bio = res.data.bio;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    addBio() {
+      axios
+        .put(
+          "http://localhost:3000/users/addBio",
+          {
+            bio: this.newBio,
+          },
+          {
+            headers: {
+              Authorization: `bearer ${this.token}`,
+            },
+          }
+        )
+        .then(() => {
+          this.getBio();
+        });
+
+      this.newBio = "";
+    },
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuth;
+    },
+    name() {
+      if (this.$store.getters.isAuth) {
+        return this.$store.getters.user.name;
+      } else {
+        return "";
+      }
+    },
+    token() {
+      return this.$store.getters.authToken;
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 * {
@@ -33,47 +121,55 @@ export default {
   padding: 40px;
 
   font-weight: 600;
-  font-size: 100px;
+  font-size: 50px;
 
   text-align: left;
   width: 700px;
   height: 400px;
   margin: 30px auto;
 
-box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.076);
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.076);
   .divider {
     margin-top: -20px;
-    font-size: 20%;
+    font-size: 40%;
     color: rgba(0, 0, 0, 0.302);
   }
   .margin-bot {
     margin-bottom: 15px;
   }
   .name {
-    font-size: 30%;
+    font-size: 70%;
   }
 
   .connections {
     color: rgb(112, 112, 112);
-    font-size: 15%;
+    font-size: 35%;
     margin-top: -10px;
   }
 
   .bio {
     margin-bottom: 40px;
-    font-size: 16%;
+    font-size: 35%;
   }
 
   .resume {
-    font-size: 15%;
+    font-size: 30%;
     font-weight: 600;
     color: rgb(58, 58, 58);
 
     .fileColor {
-    font-size: 100%;
-    font-weight: 400;
-        color: rgb(0, 0, 0);
+      font-size: 100%;
+      font-weight: 400;
+      color: rgb(0, 0, 0);
     }
+  }
+  input {
+    padding: 10px;
+  }
+  button {
+    margin-left: 5px;
+    height: 49px;
+    width: 80px;
   }
 }
 </style>

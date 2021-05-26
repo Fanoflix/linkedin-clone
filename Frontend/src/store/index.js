@@ -3,6 +3,7 @@ import { createStore } from "vuex";
 export default createStore({
   state() {
     return {
+      user: {},
       authToken: "",
       authId: "",
       isAuth: false,
@@ -10,6 +11,7 @@ export default createStore({
   },
   mutations: {
     setAuthData(state, payload) {
+      state.user = payload.user
       state.authToken = payload.token;
       state.authId = payload.id;
       state.isAuth = payload.isAuth
@@ -24,7 +26,10 @@ export default createStore({
     },
     isAuth(state) {
       return state.isAuth;
-    }
+    },
+    user(state) {
+      return state.user;
+    },
   },
   actions: {},
   modules: {},

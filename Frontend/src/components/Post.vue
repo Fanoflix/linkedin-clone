@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  props: ["content", "author", "time", "count"],
+  props: ["id", "content", "author", "time", "count"],
   methods: {
     likePost() {
       // Like post request

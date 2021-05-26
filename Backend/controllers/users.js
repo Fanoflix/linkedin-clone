@@ -39,7 +39,10 @@ export let connect = async (req, res, next) => {
 
 export let getConnections = async (req, res, next) => {
   try {
-    const user = await User.findById(req.userId).populate('connections', 'name');
+    const user = await User.findById(req.userId).populate(
+      "connections",
+      "name"
+    );
 
     if (!user) {
       const error = new Error(
@@ -50,8 +53,73 @@ export let getConnections = async (req, res, next) => {
     }
 
     res.status(200).json({
-        userId: user._id,
-        connections: user.connections
+      user: user,
+      connections: user.connections,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let getUserFromId = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.status(200).json({
+      user,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let addBio = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+    const bio = req.body.bio;
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    user.bio = bio;
+    await user.save();
+    res.status(200).json({
+      message: "Successfully updated bio",
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export let getBio = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.status(200).json({
+      bio: user.bio
     })
   } catch (err) {
     console.log(err);

@@ -19,7 +19,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "mussab@a.com",
+    "email": "ammar@a.com",
     "password": "123"
 }
 
@@ -40,24 +40,25 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 ###
 
 // Create Post
-POST http://localhost:3000/post
+POST http://localhost:3000/posts/make
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTg3NTYzLCJleHAiOjE2MjE5OTExNjN9.wDzjEV4rqpgZarj2tx8ykPNwmZ4XPdYAIqR86QCafMc
 
 {
-    "content": "ammar's post # 3"
+    "content": "ammar's post # 34"
 }
 
 ###
 
 // Get all Posts
 GET http://localhost:3000/post/getUserPosts
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTgzOTM2LCJleHAiOjE2MjE5ODc1MzZ9.avT5cIiIU4i6o-YvYor2fswA1GOQfe4rLR_H6Ad0Zuo
 
 ###
 
 GET http://localhost:3000/post/getConPosts
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTgzOTM2LCJleHAiOjE2MjE5ODc1MzZ9.avT5cIiIU4i6o-YvYor2fswA1GOQfe4rLR_H6Ad0Zuo
 
 ###
 
@@ -68,6 +69,20 @@ Content-Type: application/json
 {
     "postId" : "60ac122bf3a76824c8fb9825"
 }
+
+###
+PUT http://localhost:3000/users/addBio
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTk4MTc1NywiZXhwIjoxNjIxOTg1MzU3fQ.WBnAGaNDzAyXpr91ngk11VENO-yWwCItucPt0y7PY2U
+Content-Type: application/json
+
+{
+    "bio" : "Im Mussab"
+}
+
+###
+GET http://localhost:3000/users/getUser
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTk4MTc1NywiZXhwIjoxNjIxOTg1MzU3fQ.WBnAGaNDzAyXpr91ngk11VENO-yWwCItucPt0y7PY2U
+
 
 
 

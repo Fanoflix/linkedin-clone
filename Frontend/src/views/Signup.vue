@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="panel">
-      <div class="detail" @click="doit()">LinkedOut Account Signup</div>
+      <div class="detail">LinkedOut Account Signup</div>
     </div>
     <div class="content">
       <h1 class="title">Signup</h1>
@@ -113,15 +113,7 @@ export default {
       this.emailError = false;
     },
 
-    doit() {
-      let storedData = {
-        token: this.$store.getters.authToken,
-        id: this.$store.getters.authId,
-        isAuth: this.$store.getters.isAuth
-      };
-      console.log(storedData);
-      return storedData;
-    },
+    
 
     checkPasswordMatch() {
       if (this.password !== this.passwordCheck) {

@@ -20,7 +20,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      name: 'Ammar',
+      name: "Ammar",
       content: "",
     };
   },
@@ -29,12 +29,31 @@ export default {
       // Create a post
       console.log(this.content);
       if (this.content !== "") {
-        axios.post("http://localhost:3000/post", {
-          content: this.content,
-        });
+        axios
+          .post(
+            "http://localhost:3000/posts/make",
+            {
+              content: this.content,
+            },
+            {
+              headers: {
+                Authentication: `bearer ${this.token}`,
+              },
+            }
+          )
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
-
       this.content = "";
+    },
+  },
+  computed: {
+    token() {
+      return this.$store.getters.authToken;
     },
   },
 };
