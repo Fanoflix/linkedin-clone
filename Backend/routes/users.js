@@ -4,9 +4,9 @@ import isAuth from '../middleware/is-auth.js';
 
 const router = Router();
 router.get("/", getUsers);
-router.get("/getConnections", isAuth, getConnections)
+router.get("/getConnections/:userId", getConnections)
 router.put("/connect", isAuth, connect)
 router.put('/addBio', isAuth, addBio)
 router.get('/getBio', isAuth, getBio)
-router.get('/getUser', isAuth, getUserFromId)
+router.get('/getUser/:userId', getUserFromId)
 export default router;

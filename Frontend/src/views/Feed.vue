@@ -1,26 +1,16 @@
 <template>
   <div class="feed">
-    <create-post class="item create" />
+    <create-post @get-new-post="getNewPost" class="item create" />
 
-    <section class="posts" v-for="post in conPosts" :key="post._id">
+    <section class="posts" v-for="post in allPosts" :key="post._id">
       <post
         class="item post"
-        :id="post._id"
+        :_id="post._id"
         :author="post.author.name"
-        :likes="post.count"
+        :count="post.count"
         :content="post.content"
         :time="post.createdAt"
       />
-      <section class="posts" v-for="post in userPosts" :key="post._id">
-        <post
-          class="item post"
-          :id="post._id"
-          :author="post.author.name"
-          :likes="post.count"
-          :content="post.content"
-          :time="post.createdAt"
-        />
-      </section>
     </section>
   </div>
 </template>
@@ -36,12 +26,18 @@ export default {
   components: { CreatePost, Post },
   data() {
     return {
+      time: 0,
       content: "",
       userPosts: {},
       conPosts: {},
+      allPosts: {},
     };
   },
   methods: {
+    getNewPost() {
+      this.getUserPosts();
+      this.getConPosts();
+    },
     getConPosts() {
       axios
         .get("http://localhost:3000/posts/getConPosts", {
@@ -51,6 +47,7 @@ export default {
         })
         .then((res) => {
           this.conPosts = res.data.posts;
+          this.allPosts = { ...this.allPosts, ...this.conPosts };
         })
         .catch((err) => {
           console.log(err);
@@ -65,6 +62,7 @@ export default {
         })
         .then((res) => {
           this.userPosts = res.data.posts;
+          this.allPosts = { ...this.allPosts, ...this.userPosts };
         })
         .catch((err) => {
           console.log(err);
@@ -107,12 +105,7 @@ export default {
     padding: 20px;
     margin-top: 25px;
     border-radius: 15px;
-    background-image: linear-gradient(
-      17deg,
-      rgb(240, 240, 240),
-      rgb(255, 255, 255),
-      rgba(236, 236, 236, 0.631)
-    );
+    background-color: rgba(232, 232, 232, 0.445);
     border-bottom: 4px solid rgba(0, 0, 0, 0.05);
     border-right: 4px solid rgba(0, 0, 0, 0.1);
 

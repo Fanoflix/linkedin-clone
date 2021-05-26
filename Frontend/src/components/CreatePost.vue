@@ -18,6 +18,7 @@
 <script>
 import axios from "axios";
 export default {
+  emits: ["getNewPost"],
   data() {
     return {
       name: "Ammar",
@@ -27,7 +28,6 @@ export default {
   methods: {
     createPost() {
       // Create a post
-      console.log(this.content);
       if (this.content !== "") {
         axios
           .post(
@@ -37,12 +37,13 @@ export default {
             },
             {
               headers: {
-                Authentication: `bearer ${this.token}`,
+                Authorization: `bearer ${this.token}`,
               },
             }
           )
           .then((res) => {
-            console.log(res);
+            console.log(res)
+            this.$emit("getNewPost");
           })
           .catch((err) => {
             console.log(err);

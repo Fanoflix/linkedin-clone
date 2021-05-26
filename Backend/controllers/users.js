@@ -39,10 +39,11 @@ export let connect = async (req, res, next) => {
 
 export let getConnections = async (req, res, next) => {
   try {
-    const user = await User.findById(req.userId).populate(
+    const user = await User.findById(req.params.userId).populate(
       "connections",
       "name"
     );
+
 
     if (!user) {
       const error = new Error(
@@ -63,8 +64,9 @@ export let getConnections = async (req, res, next) => {
 };
 
 export let getUserFromId = async (req, res, next) => {
+  console.log(req.params.userId)
   try {
-    const user = await User.findById(req.userId);
+    const user = await User.findById(req.params.userId);
 
     if (!user) {
       const error = new Error(
@@ -75,7 +77,7 @@ export let getUserFromId = async (req, res, next) => {
     }
 
     res.status(200).json({
-      user,
+      user: user
     });
   } catch (err) {
     console.log(err);

@@ -42,37 +42,37 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 // Create Post
 POST http://localhost:3000/posts/make
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTg3NTYzLCJleHAiOjE2MjE5OTExNjN9.wDzjEV4rqpgZarj2tx8ykPNwmZ4XPdYAIqR86QCafMc
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDI4MDgzLCJleHAiOjE2MjIwMzE2ODN9.kXl16WBc5frMCo1cZNWHwT5UfW6vAUv3n6WzlfjdGi0
 
 {
-    "content": "ammar's post # 34"
+    "content": "So I was there with my bruddah in the jam"
 }
 
 ###
 
 // Get all Posts
-GET http://localhost:3000/post/getUserPosts
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTgzOTM2LCJleHAiOjE2MjE5ODc1MzZ9.avT5cIiIU4i6o-YvYor2fswA1GOQfe4rLR_H6Ad0Zuo
+GET http://localhost:3000/posts/getUserPosts
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDI5NzY4LCJleHAiOjE2MjIwMzMzNjh9.T3xhe9aTyYs_-WlZPyYNnOu0G2WvC3o1iyAG_3dR7wY
 
 ###
 
-GET http://localhost:3000/post/getConPosts
+GET http://localhost:3000/posts/getConPosts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxOTgzOTM2LCJleHAiOjE2MjE5ODc1MzZ9.avT5cIiIU4i6o-YvYor2fswA1GOQfe4rLR_H6Ad0Zuo
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDMxNjU1LCJleHAiOjE2MjIwMzUyNTV9.TxjhPNwJOIgRdH5gNa7QvjQWTY_vmjPlnck5Kd4GH_s
 
 ###
 
-PUT http://localhost:3000/post/likePost
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTg4OTY4NywiZXhwIjoxNjIxODkzMjg3fQ.E2o5I8O094A3Ys_jBpFJ7p4jPFU4I_uvRT47BjHiTrY
+PUT http://localhost:3000/posts/likePost
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDMxNjU1LCJleHAiOjE2MjIwMzUyNTV9.TxjhPNwJOIgRdH5gNa7QvjQWTY_vmjPlnck5Kd4GH_s
 Content-Type: application/json
 
 {
-    "postId" : "60ac122bf3a76824c8fb9825"
+    "postId" : "60ae404a3ba272215c841d7f"
 }
 
 ###
 PUT http://localhost:3000/users/addBio
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTk4MTc1NywiZXhwIjoxNjIxOTg1MzU3fQ.WBnAGaNDzAyXpr91ngk11VENO-yWwCItucPt0y7PY2U
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 Content-Type: application/json
 
 {
@@ -81,8 +81,13 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/getUser
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im11c3NhYkBhLmNvbSIsInVzZXJJZCI6IjYwYWMxMWY4ZjNhNzY4MjRjOGZiOTgyMyIsImlhdCI6MTYyMTk4MTc1NywiZXhwIjoxNjIxOTg1MzU3fQ.WBnAGaNDzAyXpr91ngk11VENO-yWwCItucPt0y7PY2U
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 
+###
+
+GET http://localhost:3000/posts/getPostById/60ae404a3ba272215c841d7f
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
+Content-Type: application/json
 
 
 

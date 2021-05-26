@@ -12,12 +12,19 @@
     <div class="margin-bot resume">
       {{ name }}'s Portfolio: <span class="fileColor">Resume.pdf</span>
     </div>
+
+    <!-- Add Update Bio -->
     <br />
     <p class="connections">Add or Edit Bio</p>
     <form @submit.prevent="addBio()">
       <input type="text" v-model="newBio" />
       <button>Add</button>
     </form>
+
+    <!-- Connect to user -->
+    <br />
+    <p class="connections">Connect to this user!</p>
+    <button class="connectBtn" @click.prevent="connectUser()">Connect</button>
   </section>
 </template>
 
@@ -25,34 +32,41 @@
 import axios from "axios";
 
 export default {
+  name: "Profile",
   data() {
     return {
       newBio: "",
       bio: "",
       skills: "",
+      name: "",
       connections: 0,
       connectionsList: {},
+      isEligible: false,
     };
   },
+
   mounted() {
-    if (!this.isLoggedIn) {
-      this.$router.push("/");
-    } else {
-      this.getConnections();
-      this.getBio();
-    }
+    console.log(this.$store.getters.isAuth);
+    console.log(this.$route.params.userId);
+    console.log("logged in");
+    this.getUser();
   },
   methods: {
-    getConnections() {
+    isEligibleForConnection() {
+      // if logged in
+      // ---- if id in store not equal to dynamically received id
+      // -------- display connect button (isEligible == true)
+    },
+    connectUser() {
+
+    },
+    getUser() {
       axios
-        .get("http://localhost:3000/users/getConnections", {
-          headers: {
-            Authorization: `bearer ${this.token}`,
-          },
-        })
+        .get(`http://localhost:3000/users/getUser/${this.paramUserId}`)
         .then((res) => {
-          this.connections = res.data.connections.length;
-          this.connectionsList = res.data.connections;
+          this.connections = res.data.user.connections.length;
+          this.bio = res.data.user.bio;
+          this.name = res.data.user.name;
         })
         .catch((err) => {
           console.log(err);
@@ -96,15 +110,11 @@ export default {
     isLoggedIn() {
       return this.$store.getters.isAuth;
     },
-    name() {
-      if (this.$store.getters.isAuth) {
-        return this.$store.getters.user.name;
-      } else {
-        return "";
-      }
-    },
     token() {
       return this.$store.getters.authToken;
+    },
+    paramUserId() {
+      return this.$route.params.userId;
     },
   },
 };
@@ -125,7 +135,7 @@ export default {
 
   text-align: left;
   width: 700px;
-  height: 400px;
+  height: 600px;
   margin: 30px auto;
 
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.076);
@@ -170,6 +180,11 @@ export default {
     margin-left: 5px;
     height: 49px;
     width: 80px;
+
+    &.connectBtn {
+      margin-left: 0;
+      width: 409px;
+    }
   }
 }
 </style>

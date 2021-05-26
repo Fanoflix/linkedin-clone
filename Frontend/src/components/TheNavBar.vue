@@ -25,13 +25,14 @@
 
     <!-- <div class="nav-elements"> -->
     <!-- If logged in -->
-    <p class="element" v-if="isLoggedIn" @click="logout()">Logout</p>
-    <router-link v-if="isLoggedIn" class="element" to="/profile">
-      {{ name }}
+    <!-- <router-link v-if="isLoggedIn" class="element" :to="{name: 'Profile' , userId: user._id}"> -->
+    <router-link v-if="isLoggedIn" class="element" :to="`/profile/${user._id}`">
+      {{ user.name }}
     </router-link>
     <router-link v-if="isLoggedIn" class="element" to="/feed">
       Feed
     </router-link>
+    <p class="element" v-if="isLoggedIn" @click="logout()">Logout</p>
 
     <!-- If not logged in -->
     <router-link v-if="!isLoggedIn" class="element" to="/login">
@@ -64,12 +65,19 @@ export default {
         return "";
       }
     },
+    user() {
+      if (this.isLoggedIn) {
+        return this.$store.getters.user;
+      } else {
+        return null;
+      }
+    }
   },
-  watch: {
-    name(_, newVal) {
-      this.name = newVal;
-    },
-  },
+  // watch: {
+  //   name(_, newVal) {
+  //     this.name = newVal;
+  //   },
+  // },
 };
 </script>
 
