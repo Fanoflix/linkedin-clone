@@ -7,7 +7,7 @@
     </h3>
     <p class="divider">_______________________________________________</p>
     <p class="content">{{ content }}</p>
-    <p class="content likes" @click.prevent="likePost()">{{ likes }} 👍</p>
+    <p class="content likes" @click.prevent="likePost()">👍   {{ likes }} </p>
   </div>
 </template>
 
@@ -102,11 +102,18 @@ export default {
 
 .likes {
   width: 60px;
+  padding: 5px;
+  border-radius: 10%;
   position: relative;
+  will-change: transform;
+  transition: all 0.2s ease-out;
+    transform: scale(1.05);
   vertical-align: bottom;
 
   &:hover {
     cursor: pointer;
+    transition: all 0.2s ease-out;
+    background-color: rgb(225, 225, 225);
   }
 }
 </style>

@@ -19,7 +19,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "ammar@a.com",
+    "email": "ammar@email.com",
     "password": "123"
 }
 
@@ -52,13 +52,13 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 
 // Get all Posts
 GET http://localhost:3000/posts/getUserPosts
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDI5NzY4LCJleHAiOjE2MjIwMzMzNjh9.T3xhe9aTyYs_-WlZPyYNnOu0G2WvC3o1iyAG_3dR7wY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 
 ###
 
 GET http://localhost:3000/posts/getConPosts
 Content-Type: application/json
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDMxNjU1LCJleHAiOjE2MjIwMzUyNTV9.TxjhPNwJOIgRdH5gNa7QvjQWTY_vmjPlnck5Kd4GH_s
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 
 ###
 
@@ -76,12 +76,12 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 Content-Type: application/json
 
 {
-    "bio" : "Im Mussab"
+    "bio" : "Im someone"
 }
 
 ###
-GET http://localhost:3000/users/getUser
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
+GET http://localhost:3000/users/getUser/60ae6c246b8e361a4ca3174b
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjA0NzIyNywiZXhwIjoxNjIyMDUwODI3fQ.X8lWh7yzsZ_ww4u9XMCl2EyxC90R6z7h25uLJ2M-jFw
 
 ###
 

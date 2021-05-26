@@ -23,25 +23,26 @@
       </router-link>
     </div>
 
-    <!-- <div class="nav-elements"> -->
+    <div class="nav-elements">
     <!-- If logged in -->
-    <!-- <router-link v-if="isLoggedIn" class="element" :to="{name: 'Profile' , userId: user._id}"> -->
-    <router-link v-if="isLoggedIn" class="element" :to="`/profile/${user._id}`">
+    <p class="element" v-if="isLoggedIn" style="color: red;" @click="logout()">Logout</p>
+    <router-link v-if="isLoggedIn" class="element" style="color: green;" :to="`/profile/${user._id}`">
       {{ user.name }}
     </router-link>
     <router-link v-if="isLoggedIn" class="element" to="/feed">
       Feed
     </router-link>
-    <p class="element" v-if="isLoggedIn" @click="logout()">Logout</p>
 
     <!-- If not logged in -->
     <router-link v-if="!isLoggedIn" class="element" to="/login">
       Log In
     </router-link>
     <router-link v-if="!isLoggedIn" class="element" to="/signup">
-      Signup</router-link
-    >
-    <!-- </div> -->
+      Signup</router-link>
+
+
+
+    </div>
   </section>
 </template>
 
@@ -71,7 +72,7 @@ export default {
       } else {
         return null;
       }
-    }
+    },
   },
   // watch: {
   //   name(_, newVal) {
@@ -95,7 +96,7 @@ export default {
   align-items: center;
   user-select: none;
 
-  .logo {
+  &.logo {
     width: 100px;
     height: 100%;
     overflow: visible;
@@ -107,23 +108,22 @@ export default {
     justify-content: center;
     justify-items: center;
     vertical-align: center;
-    margin: 0 auto;
-    text-decoration: none;
     width: 100px;
+    text-decoration: none !important;
   }
 
   .nav-elements {
     display: flex;
     flex-direction: row-reverse;
     max-width: none;
-    width: 80%;
-    width: 400px;
+    width: 70%;
     align-items: center;
-    margin: 0 auto;
+    // margin: 0 auto;
   }
 
   .element {
     cursor: pointer;
+    text-decoration: none;
     margin: 0 20px;
     font-weight: bold;
     color: #ffffff;
@@ -135,7 +135,7 @@ export default {
     align-items: center;
     justify-content: center;
     justify-items: center;
-    width: 100px;
+    width: 120px;
     transition: all 0.15s linear;
 
     &.router-link-exact-active {
