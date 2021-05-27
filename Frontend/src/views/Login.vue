@@ -71,7 +71,7 @@ export default {
               id: res.data.user._id,
               isAuth: true
             });
-            this.$router.push("/feed");
+            this.$router.push("/");
           }
         })
         .catch((err) => {

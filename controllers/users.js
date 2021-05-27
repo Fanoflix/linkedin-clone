@@ -3,6 +3,12 @@ import path from 'path';
 
 import User from '../models/user.js';
 
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
 // GET ALL USERS
 export let getUsers = async (req, res, next) => {
   const users = await User.find({});
@@ -254,9 +260,8 @@ export let uploadResume = async (req, res, next) => {
     error.statusCode = 422;
     throw error;
   }
-
   try {
-    const user = await User.findById(req.userId);
+  const user = await User.findById(req.userId);
     if (!user) {
       const error = new Error('User not found.');
       error.statusCode = 404;
@@ -264,9 +269,9 @@ export let uploadResume = async (req, res, next) => {
     }
 
     user.resumeUrl = req.file.path;
-    await user.save();
+    const result = await user.save();
 
-    res.status(201).json({ message: 'Resume Uploaded' });
+    res.status(201).json({ message: 'Resume Uploaded', filename: result.resumeUrl});
   } catch (err) {
     next(err);
   }

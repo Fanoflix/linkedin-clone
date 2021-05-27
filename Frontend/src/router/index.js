@@ -7,7 +7,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Feed from "../views/Feed.vue"
 import Profile from "../views/Profile.vue"
-
+import List from "../views/List.vue"
 // Components (Remove all when you're done prototyping)
 
 const routes = [
@@ -35,6 +35,11 @@ const routes = [
     path: '/profile/:userId',
     name: "Profile",
     component: Profile
+  },
+  {
+    path: '/list',
+    name: "List",
+    component: List
   },
   
   // COMPONENT PROTOTYPING

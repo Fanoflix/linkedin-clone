@@ -4,10 +4,43 @@ import userRoutes from "./routes/users.js";
 import postRoutes from "./routes/posts.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import multer from 'multer';
+import {v4 as uuidv4} from 'uuid';
+
+import { fileURLToPath } from 'url';
+import path, { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 dotenv.config();
 const app = express();
+
+const fileStorage= multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'documents');
+  },
+  filename: (req, file, cb) => {
+    let customFileName = uuidv4()
+    cb(null, customFileName+'.pdf');
+  },
+})
+
+const fileFilter = (req, file, cb) => {
+  if (
+    file.mimetype === 'application/pdf'
+  ) {
+    cb(null, true);
+  } else {
+    cb(null, false);
+  }
+};
+
 app.use(express.json());
+app.use(
+  multer({ storage: fileStorage, fileFilter: fileFilter }).single('documents')
+);
+app.use('/documents', express.static(path.join(__dirname, 'documents')));
 
 // CORS Permissions
 app.use((req, res, next) => {

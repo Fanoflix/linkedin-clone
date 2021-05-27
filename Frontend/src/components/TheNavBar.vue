@@ -13,8 +13,6 @@
             @mouseleave="hover = false"
             mode="out-in"
           >
-            <!-- <img key="1" v-if="$route.name != 'Home'" alt="logo" />
-            <img key="2" v-else style="transform: scale(1.32)" alt="-A-logo" /> -->
 
             <div key="1" v-if="$route.name != 'Home'">🔍💻</div>
             <div key="2" v-else style="transform: scale(1.32)">🔍💻</div>
@@ -31,6 +29,9 @@
     </router-link>
     <router-link v-if="isLoggedIn" class="element" to="/feed">
       Feed
+    </router-link>
+    <router-link v-if="isLoggedIn" class="element" to="/list">
+      List
     </router-link>
 
     <!-- If not logged in -->
@@ -50,7 +51,12 @@
 export default {
   methods: {
     logout() {
-      this.$store.commit("setAuthData", { token: "", id: "", isAuth: false });
+      this.$store.commit("setAuthData", { token: "", user: null, id: "", isAuth: false });
+      localStorage.removeItem('token')
+      localStorage.removeItem('userId')
+      localStorage.removeItem('isAuth')
+      localStorage.removeItem('user')
+
       console.log("Logging Out");
       this.$router.push("/");
     },
@@ -60,7 +66,7 @@ export default {
       return this.$store.getters.isAuth;
     },
     name() {
-      if (this.$store.getters.isAuth) {
+      if (this.isLoggedIn) {
         return this.$store.getters.user.name;
       } else {
         return "";
@@ -74,11 +80,6 @@ export default {
       }
     },
   },
-  // watch: {
-  //   name(_, newVal) {
-  //     this.name = newVal;
-  //   },
-  // },
 };
 </script>
 

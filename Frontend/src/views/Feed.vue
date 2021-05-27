@@ -1,6 +1,6 @@
 <template>
   <div class="feed">
-    <create-post @get-new-post="getNewPost" class="item create" />
+    <create-post @get-new-post="getNewPost" :sent="name" class="item create" />
 
     <section class="posts" v-for="post in allPosts" :key="post._id">
       <post
@@ -26,6 +26,7 @@ export default {
   components: { CreatePost, Post },
   data() {
     return {
+      name: "",
       time: 0,
       content: "",
       userPosts: {},
@@ -68,18 +69,34 @@ export default {
           console.log(err);
         });
     },
+    getUser() {
+      axios
+        .get(`http://localhost:3000/users/getUser/${this.authId}`)
+        .then((res) => {
+          console.log(res.data.user);
+          this.name = res.data.user.name;
+          console.log(this.name);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-  mounted() {
+  beforeMount() {
     if (!this.isLoggedIn) {
       this.$router.push("/");
     } else {
       this.getConPosts();
       this.getUserPosts();
+      this.getUser();
     }
   },
   computed: {
     isLoggedIn() {
       return this.$store.getters.isAuth;
+    },
+    authId() {
+      return this.$store.getters.authId;
     },
     token() {
       return this.$store.getters.authToken;

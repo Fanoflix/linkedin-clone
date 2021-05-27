@@ -36,8 +36,34 @@
         <button class="margin-bot2">Add</button>
       </form>
     </section>
-    <div class="margin-bot2 resume">
-      {{ name }}'s Portfolio: <span class="fileColor">Resume.pdf</span>
+
+    <!-- RESUME  -->
+    <section v-if="isEligibleForEdit">
+      <p class="margin-bot margin-top connections">Upload Your Resume</p>
+      <form @submit.prevent="uploadResume()" enctype="multipart/form-data">
+        <input
+          class="custom-file-input"
+          type="file"
+          ref="file"
+          @change="onFileChange(e)"
+        />
+        <button class="margin-bot2">Add</button>
+      </form>
+    </section>
+
+    <a
+      v-if="resumeUrl !== ''"
+      target="_blank"
+      :href="resumeUrl"
+      class="margin-bot2 connections"
+      style="cursor: pointer; color: blue; width: 120px; display: inline"
+    >
+      Download Resume
+    </a>
+    <div v-else class="margin-bot2 resume">
+      {{ name }} hasn't uploaded his resume.<span class="fileColor">{{
+        fileName
+      }}</span>
     </div>
 
     <!-- SKILLS  -->
@@ -45,9 +71,16 @@
     <p class="margin-top divider">
       ___________________________________________________
     </p>
-    <p v-for="skill in skills" :key="skill._id" class="skill">
+    <p
+      style="display: inline"
+      v-for="skill in skills"
+      :key="skill._id"
+      class="skill"
+    >
       <skill
+        style="display: inline"
         @refresh-skills="refreshSkills"
+        :isAuth="isLoggedIn"
         :targetUser="profileId"
         :name="skill.name"
         :endorsements="skill.endorsements"
@@ -81,18 +114,41 @@ export default {
       bio: "",
       skills: "",
       name: "",
+      resumeUrl: "",
       connections: 0,
+      fileName: "",
       connectionsList: {},
       isEligibleForConnect: false,
       isEligibleForEdit: false,
     };
   },
-
   mounted() {
+    console.log(this.isLoggedIn + " " + "asd" + this.token);
+    console.log(this.isEligibleForConnect + " " + this.isEligibleForEdit);
     this.getUser();
     this.checkEligibility();
   },
   methods: {
+    onFileChange() {
+      const selectedFile = this.$refs.file.files[0]; // accessing file
+      this.selectedFile = selectedFile;
+      this.fileName = selectedFile.name;
+      this.uploadFile();
+    },
+    uploadFile() {
+      const formData = new FormData();
+      formData.append("documents", this.selectedFile); // appending file
+
+      axios
+        .post("http://localhost:3000/users/uploadResume", formData, {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then(() => {
+          this.getUser();
+        });
+    },
     refreshSkills() {
       this.getSkills();
     },
@@ -109,6 +165,27 @@ export default {
           this.isEligibleForEdit = true;
         }
       }
+    },
+    connectUser() {
+      // Connect profileId to authorizedId
+      axios
+        .put(
+          "http://localhost:3000/users/connect",
+          {
+            connectId: this.profileId,
+          },
+          {
+            headers: {
+              Authorization: `bearer ${this.token}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     addSkill() {
       axios
@@ -130,16 +207,16 @@ export default {
 
       this.newSkill = "";
     },
-    connectUser() {},
     getUser() {
       axios
         .get(`http://localhost:3000/users/getUser/${this.profileId}`)
         .then((res) => {
           this.connections = res.data.user.connections.length;
-          console.log(this.connections);
           this.bio = res.data.user.bio;
           this.name = res.data.user.name;
           this.skills = res.data.user.skills;
+          console.log(res.data.user);
+          this.resumeUrl = "http://localhost:3000/" + res.data.user.resumeUrl;
         })
         .catch((err) => {
           console.log(err);
@@ -147,11 +224,7 @@ export default {
     },
     getSkills() {
       axios
-        .get("http://localhost:3000/users/getSkills", {
-          headers: {
-            Authorization: `bearer ${this.token}`,
-          },
-        })
+        .get(`http://localhost:3000/users/getSkills/${this.profileId}`, {})
         .then((res) => {
           this.skills = res.data.skills;
         })
@@ -224,9 +297,11 @@ export default {
   font-size: 40px;
 
   text-align: left;
-  width: 700px;
+  width: 1000px;
   height: 800px;
   margin: 30px auto;
+
+  color: rgb(169, 169, 169);
 
   box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.076);
   .divider {
@@ -246,39 +321,55 @@ export default {
   .margin-top {
     margin-top: -10px;
   }
-
+  .custom-file-input::-webkit-file-upload-button {
+    visibility: hidden;
+  }
+  .custom-file-input::before {
+    content: "Click here to upload your Resume.";
+  }
+  .custom-file-input {
+    border: none;
+    margin-right: 5px;
+    text-shadow: 0px 0px 2px rgb(0, 60, 32);
+    cursor: pointer;
+    height: 40px;
+  }
   .name {
-    font-size: 70%;
+    color: black;
+    font-size: 110%;
+    font-variant: small-caps;
     margin-bottom: 10px;
   }
 
   .connections {
-    color: rgb(112, 112, 112);
-    font-size: 30%;
-    // margin-top: 10px;
+    font-size: 32%;
   }
 
   .bio {
     margin-bottom: 40px;
-    font-size: 35%;
+    color: black;
+    font-size: 45%;
   }
   .skill {
-    border: 1px solid rgb(165, 165, 165);
+    // border: 1px solid rgb(165, 165, 165);
+    box-shadow: 2px 2px 5px rgb(189, 189, 189);
+    color: rgb(55, 55, 55);
+    border-radius: 4px;
     width: 120px;
-    margin: 8px;
+    margin: 4px;
     font-size: 30%;
-    padding: 5px;
+    padding: 7px;
     cursor: pointer;
   }
   .resume {
-    font-size: 30%;
-    font-weight: 600;
-    color: rgb(58, 58, 58);
+    font-size: 35%;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
 
     .fileColor {
-      font-size: 100%;
-      font-weight: 400;
-      color: rgb(0, 0, 0);
+      font-size: 120%;
+      font-weight: 600;
+      color: rgb(255, 0, 0);
     }
   }
   input {

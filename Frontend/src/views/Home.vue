@@ -1,8 +1,12 @@
 <template>
   <div>
-    <span class="welcome">
+    <span v-if="!isLoggedIn" class="welcome">
       <h1>Hello!</h1>
       <h3>Welcome to LinkedOut.</h3>
+    </span>
+    <span v-else class="welcome">
+      <h1>Welcome Back!</h1>
+      <h3>Check out your feed or profile!</h3>
     </span>
 
     <span class="centerLine"></span>
@@ -19,8 +23,11 @@
       <p>connect with the world</p>
     </section>
     <!-- IF NOT LOGGED IN -->
-    <button @click.prevent="goToSignup()">get started</button>
+    <button v-if="!isLoggedIn" @click.prevent="goToSignup()">
+      get started
+    </button>
     <!-- ELSE -->
+    <button v-else @click.prevent="goToProfile()">my profile</button>
     <!-- Button to "post" link  -->
   </div>
 </template>
@@ -31,6 +38,17 @@ export default {
   methods: {
     goToSignup() {
       this.$router.push("/signup");
+    },
+    goToProfile() {
+      this.$router.push(`/profile/${this.userId}`)
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuth;
+    },
+    userId() {
+      return this.$store.getters.authId;
     },
   },
 };

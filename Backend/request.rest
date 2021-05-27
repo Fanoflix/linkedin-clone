@@ -101,12 +101,12 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/users/getSkills
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWViYzJlYjM2YjRlMmVmMDhiODkzOCIsImlhdCI6MTYyMjExNjY2MiwiZXhwIjoxNjIyMTIwMjYyfQ.eKBizSHO0KoOndhQucvhNprwUsoAD9yBBhVOgTCbXEg
 Content-Type: application/json
 
 ###
 PUT http://localhost:3000/users/resetSkills
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjEyNTQwMSwiZXhwIjoxNjIyMTI5MDAxfQ.v4vZDGiqvTVQ2LFWUOOq6mTxjyDxiA3uGf8WuNd747Q
 Content-Type: application/json
 
 ###
@@ -119,5 +119,7 @@ Content-Type: application/json
     "skillId" : "60af68e4cc71c233e83ab4e4"
 }
 
+
 ###
 GET http://localhost:3000/users
+

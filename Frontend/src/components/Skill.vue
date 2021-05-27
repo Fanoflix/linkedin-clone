@@ -1,7 +1,9 @@
 <template>
   <div @click="endorseSkill()">
     {{ name }}
-    <p class="endorse">{{ endorsements }}</p>
+    <p class="endorse" v-if="endorsements !== 0">
+      {{ endorsements }}
+    </p>
   </div>
 </template>
 
@@ -9,10 +11,10 @@
 import axios from "axios";
 export default {
   emits: ["refreshSkills"],
-  props: ["targetUser", "id", "name", "endorsements"],
+  props: ["isAuth", "targetUser", "id", "name", "endorsements"],
   methods: {
     endorseSkill() {
-      if (this.content !== "") {
+      if (this.content !== "" && this.isAuth) {
         axios
           .put(
             "http://localhost:3000/users/endorseSkill",
@@ -45,10 +47,13 @@ export default {
 
 <style lang="scss" scoped>
 div {
+  border-radius: 20px;
   text-align: left;
-  p {
+  .endorse {
     text-align: right;
     display: inline;
+    color: rgb(0, 39, 0);
+    text-shadow: 0px 0px 5px rgb(0, 157, 0)
   }
 }
 </style>

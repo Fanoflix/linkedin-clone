@@ -1,13 +1,13 @@
 <template>
   <section class="container">
-    <h1 class="name">Muhammad Ammar</h1>
+    <h1 class="name">{{sent}}</h1>
 
     <form @submit.prevent="createPost()">
       <textarea
         class="texts"
         type="text"
         v-model="content"
-        :placeholder="name + ', share something insightful!'"
+        :placeholder="sent + ', share something insightful!'"
       />
       <br />
       <button>Post</button>
@@ -19,9 +19,9 @@
 import axios from "axios";
 export default {
   emits: ["getNewPost"],
+  props: ['sent'],
   data() {
     return {
-      name: "Ammar",
       content: "",
     };
   },

@@ -20,6 +20,10 @@ const userSchema = new Schema({
     required: false,
     default: ''
   },
+  resumeUrl: {
+    type: String,
+    required: false
+  },
   posts: [
     {
       type: Schema.Types.ObjectId,
