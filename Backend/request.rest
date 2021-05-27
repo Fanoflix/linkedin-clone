@@ -1,5 +1,5 @@
 // Get all Users
-GET http://localhost:3000/users
+
 
 
 ###
@@ -89,6 +89,35 @@ GET http://localhost:3000/posts/getPostById/60ae404a3ba272215c841d7f
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 Content-Type: application/json
 
+###
+PUT http://localhost:3000/users/addSkill
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDIwMCwiZXhwIjoxNjIyMTEzODAwfQ.cI14MX_8hhSCNM_18Yh6uYULYsvnNwVpRyLlJ2FBMIo
+Content-Type: application/json
 
+{
+    "name" : "Python",
+    "endorsements" : 0
+}
 
+###
+GET http://localhost:3000/users/getSkills
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
+Content-Type: application/json
 
+###
+PUT http://localhost:3000/users/resetSkills
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/users/endorseSkill
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
+Content-Type: application/json
+
+{
+    "userId" : "60ae6c246b8e361a4ca3174b",
+    "skillId" : "60af68e4cc71c233e83ab4e4"
+}
+
+###
+GET http://localhost:3000/users

@@ -2,17 +2,22 @@
   <section class="container">
     Profile
     <!-- Connect to user -->
-    <button class="margin-bot connectBtn" v-if="isEligibleForConnect" @click.prevent="connectUser()">
+    <button
+      class="margin-bot connectBtn"
+      v-if="isEligibleForConnect"
+      @click.prevent="connectUser()"
+    >
       Connect to this user
     </button>
-    <br /><br>
-    <p class="margin-top divider">___________________________________________________</p>
+    <br /><br />
+    <p class="margin-top divider">
+      ___________________________________________________
+    </p>
     <h1 class="margin-bot name">{{ name }}</h1>
 
     <p class="margin-bot2 margin-top connections">
       {{ connections }} connection(s)
     </p>
-
 
     <p
       class="margin-bot bio"
@@ -24,23 +29,33 @@
     <p class="margin-bot bio" v-else>{{ bio }}</p>
 
     <!-- Add/Update Bio -->
-    <p class="margin-bot margin-top connections">Add or Edit Bio</p>
-    <form @submit.prevent="addBio()">
-      <input type="text" v-model="newBio" />
-      <button class="margin-bot2" >Add</button>
-    </form>
-
-
+    <section v-if="isEligibleForEdit">
+      <p class="margin-bot margin-top connections">Add or Edit Bio</p>
+      <form @submit.prevent="addBio()">
+        <input type="text" v-model="newBio" />
+        <button class="margin-bot2">Add</button>
+      </form>
+    </section>
     <div class="margin-bot2 resume">
       {{ name }}'s Portfolio: <span class="fileColor">Resume.pdf</span>
     </div>
 
     <!-- SKILLS  -->
     <p class="margin-top2">Skills</p>
-    <p class="margin-top divider">___________________________________________________</p>
-    <p class="bio">Python &nbsp; | &nbsp; C++</p>
+    <p class="margin-top divider">
+      ___________________________________________________
+    </p>
+    <p v-for="skill in skills" :key="skill._id" class="skill">
+      <skill
+        @refresh-skills="refreshSkills"
+        :targetUser="profileId"
+        :name="skill.name"
+        :endorsements="skill.endorsements"
+        :id="skill._id"
+      />
+    </p>
     <!-- Add Skills -->
-    <section v-if="isEligibleForEdit">
+    <section class="margin-top2" v-if="isEligibleForEdit">
       <p class="margin-bot connections">Add Skill</p>
       <form @submit.prevent="addSkill()">
         <input type="text" v-model="newSkill" />
@@ -52,9 +67,13 @@
 
 <script>
 import axios from "axios";
+import Skill from "../components/Skill.vue";
 
 export default {
   name: "Profile",
+  components: {
+    Skill,
+  },
   data() {
     return {
       newBio: "",
@@ -70,26 +89,46 @@ export default {
   },
 
   mounted() {
-    console.log("logged in");
     this.getUser();
     this.checkEligibility();
   },
   methods: {
+    refreshSkills() {
+      this.getSkills();
+    },
     checkEligibility() {
-      // if logged in
-      // ---- if id in store IS NOT EQUAL to dynamically received id
-      // -------- display connect button (isEligibleForConnect == true)
       if (this.isLoggedIn) {
         if (this.authorizedId !== this.profileId) {
-          // cannot change bio + can connect
+          // cannot change bio BUT can connect
           this.isEligibleForConnect = true;
           this.isEligibleForEdit = false;
         } else {
-          // can change bio + cannot connect
+          // can change bio BUT cannot connect
           this.isEligibleForConnect = false;
+          console.log("status: logged in");
           this.isEligibleForEdit = true;
         }
       }
+    },
+    addSkill() {
+      axios
+        .put(
+          "http://localhost:3000/users/addSkill",
+          {
+            name: this.newSkill,
+            endorsements: 0,
+          },
+          {
+            headers: {
+              Authorization: `bearer ${this.token}`,
+            },
+          }
+        )
+        .then(() => {
+          this.getSkills();
+        });
+
+      this.newSkill = "";
     },
     connectUser() {},
     getUser() {
@@ -101,6 +140,20 @@ export default {
           this.bio = res.data.user.bio;
           this.name = res.data.user.name;
           this.skills = res.data.user.skills;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getSkills() {
+      axios
+        .get("http://localhost:3000/users/getSkills", {
+          headers: {
+            Authorization: `bearer ${this.token}`,
+          },
+        })
+        .then((res) => {
+          this.skills = res.data.skills;
         })
         .catch((err) => {
           console.log(err);
@@ -209,7 +262,14 @@ export default {
     margin-bottom: 40px;
     font-size: 35%;
   }
-
+  .skill {
+    border: 1px solid rgb(165, 165, 165);
+    width: 120px;
+    margin: 8px;
+    font-size: 30%;
+    padding: 5px;
+    cursor: pointer;
+  }
   .resume {
     font-size: 30%;
     font-weight: 600;

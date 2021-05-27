@@ -44,7 +44,6 @@ export let getConnections = async (req, res, next) => {
       "name"
     );
 
-
     if (!user) {
       const error = new Error(
         "Unexpeted Error Encountered, User was not found!"
@@ -76,7 +75,7 @@ export let getUserFromId = async (req, res, next) => {
     }
 
     res.status(200).json({
-      user: user
+      user: user,
     });
   } catch (err) {
     console.log(err);
@@ -101,9 +100,11 @@ export let addBio = async (req, res, next) => {
     await user.save();
     res.status(200).json({
       message: "Successfully updated bio",
+      bio: user.bio,
     });
   } catch (err) {
     console.log(err);
+    next(err);
   }
 };
 
@@ -120,8 +121,125 @@ export let getBio = async (req, res, next) => {
     }
 
     res.status(200).json({
-      bio: user.bio
-    })
+      bio: user.bio,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let resetSkills = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    user.skills = [];
+    await user.save();
+
+    res.status(200).json({
+      message: "All skills have been reset.",
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let addSkill = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+    const skill = {
+      name: req.body.name,
+      endoresements: req.body.endoresements,
+    };
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    if (user.skills !== []) {
+      for (let item of user.skills) {
+        if (skill.name === item.name) {
+          const error = new Error("Skill already exists!");
+          error.statusCode = 409;
+          throw error;
+        }
+      }
+    }
+    user.skills.push(skill);
+    await user.save();
+    res.status(200).json({
+      message: "Successfully added skill",
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let getSkills = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    res.status(200).json({
+      skills: user.skills,
+    });
+  } catch (err) {
+    console.log(err);
+    next(err);
+  }
+};
+
+export let endorseSkill = async (req, res, next) => {
+  try {
+    const targetUser = await User.findById(req.body.userId);
+    const skillId = req.body.skillId;
+
+
+    if (!targetUser) {
+      const error = new Error(
+        "Unexpeted Error Encountered, User was not found!"
+      );
+      error.statusCode = 404;
+      throw error;
+    }
+
+    if (targetUser.skills !== []) {
+      for (let item of targetUser.skills) {
+        if (skillId == item._id) {
+          item.endorsements += 1;
+        }
+      }
+    } else {
+      const error = new Error("Unexpected Error: skill not found.");
+      error.statusCode = 404;
+      throw error;
+    }
+
+    await targetUser.save();
+    res.status(200).json({
+      message: "Successfully endorsed skill"
+    });
   } catch (err) {
     console.log(err);
     next(err);
