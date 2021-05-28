@@ -2,7 +2,17 @@
   <div class="feed">
     <create-post @get-new-post="getNewPost" :sent="name" class="item create" />
 
-    <section class="posts" v-for="post in allPosts" :key="post._id">
+    <section class="posts" v-for="post in userPosts" :key="post._id">
+      <post
+        class="item post"
+        :_id="post._id"
+        :author="post.author.name"
+        :count="post.count"
+        :content="post.content"
+        :time="post.createdAt"
+      />
+    </section>
+    <section class="posts" v-for="post in conPosts" :key="post._id">
       <post
         class="item post"
         :_id="post._id"
@@ -48,7 +58,6 @@ export default {
         })
         .then((res) => {
           this.conPosts = res.data.posts;
-          this.allPosts = { ...this.allPosts, ...this.conPosts };
         })
         .catch((err) => {
           console.log(err);
@@ -63,7 +72,6 @@ export default {
         })
         .then((res) => {
           this.userPosts = res.data.posts;
-          this.allPosts = { ...this.allPosts, ...this.userPosts };
         })
         .catch((err) => {
           console.log(err);

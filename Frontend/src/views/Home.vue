@@ -92,11 +92,11 @@ p {
   position: fixed;
   top: 50%;
   left: 50%;
-  box-shadow: -1px 1px 1px 0px rgba($color: #00c3ff, $alpha: 0.5),
-    -3px 3px 1px 0px rgba($color: #ff00a2, $alpha: 0.5),
-    -6px 6px 1px 0px rgba($color: #15ff00, $alpha: 0.5);
+  // box-shadow: -1px 1px 1px 0px rgba($color: #00c3ff, $alpha: 0.5),
+  //   -3px 3px 1px 0px rgba($color: #ff00a2, $alpha: 0.5),
+  //   -6px 6px 1px 0px rgba($color: #15ff00, $alpha: 0.5);
   background-color: rgb(0, 0, 0);
-  border: 1px ridge;
+  border: 1px solid rgb(0, 255, 251);
   height: 450px;
   width: 4px;
   margin: -100px -1px;

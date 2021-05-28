@@ -47,7 +47,7 @@
           ref="file"
           @change="onFileChange(e)"
         />
-        <button class="margin-bot2">Add</button>
+        <!-- <button class="margin-bot2">Add</button> -->
       </form>
     </section>
 
