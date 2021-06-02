@@ -29,11 +29,12 @@ npm run lint
 ### Customize configuration
 See [Vue Configuration Reference](https://cli.vuejs.org/config/).
 
-## Work
+## Tasks checklist
 
 Task | Status
 ---- | ----
 Optimized, efficient and error handled REST APIs (with correct error codes). | :heavy_check_mark:
-Authentication through Javascript Web Token and storing the user authentication information in vue global store (Vuex). | :heavy_check_mark:
-Add and improve existing Search Engine Optimized DOM tags and structure. | :heavy_multiplication_x:
-Securing and persisting user session by storing user authentication information in ‘onlyHttp’ cookie to prevent XSS and CSRF attacks. | :heavy_multiplication_x:
+Authenticate through Javascript Web Token and store the user authentication information in vue global store (Vuex). | :heavy_check_mark:
+Add and improve existing Search Engine Optimized DOM tags and structure. | :x:
+Secure and persist user sessions by storing user authentication information in ‘onlyHttp’ cookie to prevent XSS and CSRF attacks. | :x:
+Reduce and limit the number of API calls by using socket.io for quick update of user bio and skills in Profile view. | :x:
