@@ -20,11 +20,18 @@
     </p>
 
     <p
-      class="margin-bot bio"
-      v-if="bio == ''"
+      class="margin-bot bio empty"
+      v-if="bio == '' && isEligibleForEdit"
       style="color: gray; font-size: 15px"
     >
       Describe yourself!
+    </p>
+    <p
+      class="margin-bot bio empty"
+      v-else-if="bio == '' && !isEligibleForEdit"
+      style="color: gray; font-size: 15px"
+    >
+      {{name}} has not added any bio.
     </p>
     <p class="margin-bot bio" v-else>{{ bio }}</p>
 
@@ -123,8 +130,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.isLoggedIn + " " + "asd" + this.token);
-    console.log(this.isEligibleForConnect + " " + this.isEligibleForEdit);
     this.getUser();
     this.checkEligibility();
   },
@@ -349,6 +354,9 @@ export default {
     margin-bottom: 40px;
     color: black;
     font-size: 45%;
+    &.empty {
+      font-style: italic;
+    }
   }
   .skill {
     // border: 1px solid rgb(165, 165, 165);

@@ -13,7 +13,6 @@
             @mouseleave="hover = false"
             mode="out-in"
           >
-
             <div key="1" v-if="$route.name != 'Home'">🔍💻</div>
             <div key="2" v-else style="transform: scale(1.32)">🔍💻</div>
           </transition>
@@ -22,27 +21,31 @@
     </div>
 
     <div class="nav-elements">
-    <!-- If logged in -->
-    <p class="element" v-if="isLoggedIn" style="color: red;" @click="logout()">Logout</p>
-    <router-link v-if="isLoggedIn" class="element" style="color: green;" :to="`/profile/${user._id}`">
-      {{ user.name }}
-    </router-link>
-    <router-link v-if="isLoggedIn" class="element" to="/feed">
-      Feed
-    </router-link>
-    <router-link v-if="isLoggedIn" class="element" to="/list">
-      List
-    </router-link>
+      <!-- If logged in -->
+      <p class="element" v-if="isLoggedIn" style="color: red" @click="logout()">
+        Logout
+      </p>
+      <router-link
+        v-if="isLoggedIn"
+        class="element"
+        style="color: green"
+        :to="`/profile/${user._id}`"
+      >
+        {{ user.name }}
+      </router-link>
+      <router-link v-if="isLoggedIn" class="element" to="/feed">
+        Feed
+      </router-link>
 
-    <!-- If not logged in -->
-    <router-link v-if="!isLoggedIn" class="element" to="/login">
-      Log In
-    </router-link>
-    <router-link v-if="!isLoggedIn" class="element" to="/signup">
-      Signup</router-link>
+      <!-- If not logged in -->
+      <router-link v-if="!isLoggedIn" class="element" to="/login">
+        Log In
+      </router-link>
+      <router-link v-if="!isLoggedIn" class="element" to="/signup">
+        Signup</router-link
+      >
 
-
-
+      <router-link class="element" to="/list"> List </router-link>
     </div>
   </section>
 </template>
@@ -51,11 +54,16 @@
 export default {
   methods: {
     logout() {
-      this.$store.commit("setAuthData", { token: "", user: null, id: "", isAuth: false });
-      localStorage.removeItem('token')
-      localStorage.removeItem('userId')
-      localStorage.removeItem('isAuth')
-      localStorage.removeItem('user')
+      this.$store.commit("setAuthData", {
+        token: "",
+        user: null,
+        id: "",
+        isAuth: false,
+      });
+      localStorage.removeItem("token");
+      localStorage.removeItem("userId");
+      localStorage.removeItem("isAuth");
+      localStorage.removeItem("user");
 
       console.log("Logging Out");
       this.$router.push("/");

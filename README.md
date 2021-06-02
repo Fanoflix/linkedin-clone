@@ -1,18 +1,24 @@
 # linkedin-clone
 
 ## Project setup
+Run the following command in both .../Frontend and .../Backend directories
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Compiles and hot-reloads for Frontend demo and development
+
+Run the following command in .../Frontend directory
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Compiles and hot-reloads for Backend demo and development
+
+Run the following command in .../Backend directory
 ```
-npm run build
+npm start
 ```
 
 ### Lints and fixes files
@@ -21,4 +27,4 @@ npm run lint
 ```
 
 ### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Vue Configuration Reference](https://cli.vuejs.org/config/).
