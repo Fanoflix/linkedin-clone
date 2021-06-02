@@ -1,7 +1,7 @@
 # linkedin-clone
 
 ## Project setup
-Run the following command in both .../Frontend and .../Backend directories
+> Run the following command in both .../Frontend and .../Backend directories
 
 ```
 npm install
@@ -9,14 +9,14 @@ npm install
 
 ### Compiles and hot-reloads for Frontend demo and development
 
-Run the following command in .../Frontend directory
+> Run the following command in .../Frontend directory
 ```
 npm run serve
 ```
 
 ### Compiles and hot-reloads for Backend demo and development
 
-Run the following command in .../Backend directory
+> Run the following command in .../Backend directory
 ```
 npm start
 ```
