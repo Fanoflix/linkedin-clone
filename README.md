@@ -36,5 +36,5 @@ Task | Status
 Optimized, efficient and error handled REST APIs (with correct error codes). | :heavy_check_mark:
 Authenticate through Javascript Web Token and store the user authentication information in vue global store (Vuex). | :heavy_check_mark:
 Add and improve existing Search Engine Optimized DOM tags and structure. | :x:
-Secure and persist user sessions by storing user authentication information in 'HttpOnly' cookie to prevent XSS and CSRF attacks. | :x:
+Secure and persist user sessions by storing user authentication information in 'HttpOnly' cookie to prevent Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) attacks. | :x:
 Reduce and limit the number of API calls by using socket.io for quick update of user bio and skills in Profile view. | :x:
