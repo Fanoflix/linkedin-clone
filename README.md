@@ -33,7 +33,7 @@ See [Vue Configuration Reference](https://cli.vuejs.org/config/).
 
 Task | Status
 ---- | ----
-Optimized, efficient and error handled REST APIs (with correct error codes). | :heavy_check_mark:
+Optimized, efficient and error handled REST API (with correct error codes). | :heavy_check_mark:
 Authenticate through Javascript Web Token and store the user authentication information in vue global store (Vuex). | :heavy_check_mark:
 Add and improve existing Search Engine Optimized DOM tags and structure. | :x:
 Secure and persist user sessions by storing user authentication information in 'HttpOnly' cookie to prevent Cross-Site Scripting (XSS) and Cross-Site Request Forgery (CSRF) attacks. | :x:
