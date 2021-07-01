@@ -18,6 +18,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Roboto+Slab:wght@500&display=swap");
 
+
 * {
   // Custom Scrollbar
   /* width */

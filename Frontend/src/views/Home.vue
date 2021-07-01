@@ -150,11 +150,11 @@ button {
   color: rgb(0, 0, 0);
 
   will-change: border;
-  transition: all 0.6s ease-in-out, background-color 0.05s linear,
+  transition: all 0.25s ease-in-out, background-color 0.05s linear,
     box-shadow 0.3s ease-in;
-  box-shadow: -8px 8px 0px rgba($color: #00e5ff, $alpha: 0.35),
-    6px -6px 0px rgba($color: #ff00a2, $alpha: 0.35),
-    15px 18px 0px rgba($color: #15ff00, $alpha: 0.35);
+  box-shadow: -8px 8px 0px rgba($color: #00e5ff, $alpha: 0.6),
+    6px -6px 0px rgba($color: #ff00a2, $alpha: 0.4),
+    15px 18px 0px rgba($color: #15ff00, $alpha: 0.4);
 
   &:hover {
     transition: all 0.15s ease-in-out, background-color 0.1s linear;
@@ -162,10 +162,9 @@ button {
     color: white;
     border-color: rgb(255, 255, 255);
     background-color: rgb(0, 0, 0);
-    transform: translate(5px, -5px);
-    box-shadow: -8px 8px 10px 0px rgba($color: #00e5ff, $alpha: 0.35),
-      6px -6px 10px 0px rgba($color: #ff00a2, $alpha: 0.35),
-      15px 18px 10px 0px rgba($color: #15ff00, $alpha: 0.35);
+    box-shadow: -8px 8px 10px 0px rgba($color: #00e5ff, $alpha: 0.6),
+      6px -6px 10px 0px rgba($color: #ff00a2, $alpha: 0.6),
+      15px 18px 10px 0px rgba($color: #15ff00, $alpha: 0.6);
   }
 
   background-color: white;
