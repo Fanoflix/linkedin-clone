@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="panel">
-      <div class="detail" >LinkedOut Account Login</div>
+      <div class="detail">LinkedOut Account Login</div>
     </div>
     <div class="content">
       <h1 class="title">Log In</h1>
@@ -9,7 +9,6 @@
         Fill in your Account Information.
       </p>
 
-      <!-- Form -->
       <form @submit.prevent="onSubmit()" class="inputs">
         Email <br />
         <input type="text" v-model="email" placeholder="Email" /><br />
@@ -31,7 +30,6 @@
 
         <button>Login</button>
       </form>
-
       <p>
         Don't have an account?
         <router-link class="note" to="/signup">Signup</router-link>
@@ -69,7 +67,7 @@ export default {
               token: res.data.token,
               user: res.data.user,
               id: res.data.user._id,
-              isAuth: true
+              isAuth: true,
             });
             this.$router.push("/");
           }
@@ -98,7 +96,7 @@ export default {
       let storedData = {
         token: this.$store.getters.authToken,
         id: this.$store.getters.authId,
-        isAuth: this.$store.getters.isAuth
+        isAuth: this.$store.getters.isAuth,
       };
       console.log(storedData);
       return storedData;

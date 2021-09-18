@@ -33,10 +33,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
     "connectId" : "60ac11f8f3a76824c8fb9823"
 }
 
-
-
 /// =========== POSTS =============
-
 ###
 
 // Create Post
@@ -80,22 +77,22 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/users/getUser/60ae6c246b8e361a4ca3174b
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjA0NzIyNywiZXhwIjoxNjIyMDUwODI3fQ.X8lWh7yzsZ_ww4u9XMCl2EyxC90R6z7h25uLJ2M-jFw
+GET http://localhost:3000/users/getUser/60b080460a76c5394813e581
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 
 ###
 
 GET http://localhost:3000/posts/getPostById/60ae404a3ba272215c841d7f
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 Content-Type: application/json
 
 ###
 PUT http://localhost:3000/users/addSkill
-Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDIwMCwiZXhwIjoxNjIyMTEzODAwfQ.cI14MX_8hhSCNM_18Yh6uYULYsvnNwVpRyLlJ2FBMIo
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 Content-Type: application/json
 
 {
-    "name" : "Python",
+    "name" : "GoLang",
     "endorsements" : 0
 }
 
