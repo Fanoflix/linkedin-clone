@@ -5,17 +5,16 @@ import postRoutes from "./routes/posts.js";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import multer from 'multer';
-import {v4 as uuidv4} from 'uuid';
 
 import { fileURLToPath } from 'url';
 import path, { dirname } from 'path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-dotenv.config();
 const app = express();
+dotenv.config();
 
+// Setting up Multer Fire Filter
 const fileStorage= multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'documents');
@@ -40,6 +39,8 @@ app.use(express.json());
 app.use(
   multer({ storage: fileStorage, fileFilter: fileFilter }).single('documents')
 );
+
+// Setting up static folder
 app.use('/documents', express.static(path.join(__dirname, 'documents')));
 
 // CORS Permissions
@@ -68,11 +69,11 @@ app.use((error, req, res, next) => {
   res.status(status).json({ message, data });
 });
 
-// DB Connection
+// DB Connection and Server Listening
 mongoose
   .connect(process.env.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => app.listen(3000))
+  .then(() => app.listen(4000))
   .catch((err) => console.log(err));

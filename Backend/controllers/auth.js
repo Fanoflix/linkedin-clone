@@ -42,7 +42,7 @@ export let login = async (req, res, next) => {
     // Checking User email
     if (!user) {
       const error = new Error("User Not Found!");
-      error.statusCode = 404;
+      error.statusCode = 404;s
       throw error;
     }
 

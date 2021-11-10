@@ -30,7 +30,7 @@ export default {
         this.likes += 1;
       }
       this.clicked = !this.clicked;
-
+      
       axios
         .put(
           "http://localhost:3000/posts/likePost",

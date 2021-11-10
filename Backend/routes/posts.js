@@ -4,9 +4,12 @@ import isAuth from '../middleware/is-auth.js';
 
 const router = Router();
 
-router.post("/make", isAuth, makePost);
-router.get("/getUserPosts", isAuth, getUserPosts);
+// posts + puts
 router.put('/likePost', isAuth, likePost);
+router.post("/make", isAuth, makePost);
+
+// gets
+router.get("/getUserPosts", isAuth, getUserPosts);
 router.get("/getConPosts", isAuth, getConPosts);
 router.get("/getPostById/:postId", isAuth, getPostById);
 export default router;
