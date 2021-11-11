@@ -18,14 +18,15 @@ export let makePost = async (req, res, next) => {
       throw error;
     }
 
-    // adding post
     const post = new Post({
       author: userId,
       content,
     });
 
+    // adding post
     const result = await post.save();
 
+    // adding post to user
     user.posts.push(result._id);
     await user.save();
 
