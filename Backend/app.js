@@ -12,9 +12,10 @@ import path, { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const app = express();
+const SERVE_PORT = 3000;
 dotenv.config();
 
-// Setting up Multer Fire Filter
+// Setting up Multer File Filter
 const fileStorage= multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'documents');
@@ -75,5 +76,5 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => app.listen(4000))
+  .then(() => app.listen(SERVE_PORT))
   .catch((err) => console.log(err));

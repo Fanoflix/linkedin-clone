@@ -1,21 +1,18 @@
 // Get all Users
-
-
-
 ###
 
-POST http://localhost:4000/auth/signup
+POST http://localhost:300/auth/signup
 Content-Type: application/json
 
 {
-    "email": "mussab@a.com",
-    "name": "Mussab",
+    "email": "mahad@a.com",
+    "name": "Mahad",
     "password": "123"
 }
 
 ###
 
-POST http://localhost:4000/auth/login
+POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
@@ -25,7 +22,7 @@ Content-Type: application/json
 
 ###
 
-PUT http://localhost:4000/users/connect
+PUT http://localhost:3000/users/connect
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIxODg5NTYzLCJleHAiOjE2MjE4OTMxNjN9.WHCvLglgPx4pfl42XjQjAXd9cC2uGZGj4DJUyacmLZU
 
@@ -37,7 +34,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 ###
 
 // Create Post
-POST http://localhost:4000/posts/make
+POST http://localhost:3000/posts/make
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDI4MDgzLCJleHAiOjE2MjIwMzE2ODN9.kXl16WBc5frMCo1cZNWHwT5UfW6vAUv3n6WzlfjdGi0
 
@@ -48,18 +45,18 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 ###
 
 // Get all Posts
-GET http://localhost:4000/posts/getUserPosts
+GET http://localhost:3000/posts/getUserPosts
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 
 ###
 
-GET http://localhost:4000/posts/getConPosts
+GET http://localhost:3000/posts/getConPosts
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 
 ###
 
-PUT http://localhost:4000/posts/likePost
+PUT http://localhost:3000/posts/likePost
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDMxNjU1LCJleHAiOjE2MjIwMzUyNTV9.TxjhPNwJOIgRdH5gNa7QvjQWTY_vmjPlnck5Kd4GH_s
 Content-Type: application/json
 
@@ -68,7 +65,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:4000/users/addBio
+PUT http://localhost:3000/users/addBio
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDM0NzgwLCJleHAiOjE2MjIwMzgzODB9.qOUVVOiXOdBwoOFFqeBvVLvW9nF5J2zOZ5nBJhS-nPY
 Content-Type: application/json
 
@@ -77,17 +74,17 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/users/getUser/60b080460a76c5394813e581
+GET http://localhost:3000/users/getUser/60b080460a76c5394813e581
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 
 ###
 
-GET http://localhost:4000/posts/getPostById/60ae404a3ba272215c841d7f
+GET http://localhost:3000/posts/getPostById/60ae404a3ba272215c841d7f
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 Content-Type: application/json
 
 ###
-PUT http://localhost:4000/users/addSkill
+PUT http://localhost:3000/users/addSkill
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYjA4MDQ2MGE3NmM1Mzk0ODEzZTU4MSIsImlhdCI6MTYyNjM2Nzk5OSwiZXhwIjoxNjI2MzcxNTk5fQ.xo4n-XKHoIlsgJVW0JLQe80md6OqVvTtgfMwu7oW5Vs
 Content-Type: application/json
 
@@ -97,17 +94,17 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:4000/users/getSkills
+GET http://localhost:3000/users/getSkills
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWViYzJlYjM2YjRlMmVmMDhiODkzOCIsImlhdCI6MTYyMjExNjY2MiwiZXhwIjoxNjIyMTIwMjYyfQ.eKBizSHO0KoOndhQucvhNprwUsoAD9yBBhVOgTCbXEg
 Content-Type: application/json
 
 ###
-PUT http://localhost:4000/users/resetSkills
+PUT http://localhost:3000/users/resetSkills
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjEyNTQwMSwiZXhwIjoxNjIyMTI5MDAxfQ.v4vZDGiqvTVQ2LFWUOOq6mTxjyDxiA3uGf8WuNd747Q
 Content-Type: application/json
 
 ###
-PUT http://localhost:4000/users/endorseSkill
+PUT http://localhost:3000/users/endorseSkill
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGVtYWlsLmNvbSIsInVzZXJJZCI6IjYwYWU2YzI0NmI4ZTM2MWE0Y2EzMTc0YiIsImlhdCI6MTYyMjExMDk3MiwiZXhwIjoxNjIyMTE0NTcyfQ.n3DJVftRerzxUw_uTXRzrcwBzsScvMXh5ZFA9odMvnI
 Content-Type: application/json
 
@@ -118,5 +115,5 @@ Content-Type: application/json
 
 
 ###
-GET http://localhost:4000/users
+GET http://localhost:3000/users
 
