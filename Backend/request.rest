@@ -1,7 +1,7 @@
 // Get all Users
 ###
 
-POST http://localhost:300/auth/signup
+POST http://localhost:3000/auth/signup
 Content-Type: application/json
 
 {
@@ -34,7 +34,7 @@ Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQ
 ###
 
 // Create Post
-POST http://localhost:3000/posts/make
+POST http://localhost:3000/posts/makePost
 Content-Type: application/json
 Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFtbWFyQGEuY29tIiwidXNlcklkIjoiNjBhYzEyMGVmM2E3NjgyNGM4ZmI5ODI0IiwiaWF0IjoxNjIyMDI4MDgzLCJleHAiOjE2MjIwMzE2ODN9.kXl16WBc5frMCo1cZNWHwT5UfW6vAUv3n6WzlfjdGi0
 

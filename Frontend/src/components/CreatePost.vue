@@ -31,7 +31,7 @@ export default {
       if (this.content !== "") {
         axios
           .post(
-            "http://localhost:3000/posts/make",
+            "http://localhost:3000/posts/makePost",
             {
               content: this.content,
             },

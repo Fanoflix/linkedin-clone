@@ -6,7 +6,7 @@ const router = Router();
 
 // posts + puts
 router.put('/likePost', isAuth, likePost);
-router.post("/make", isAuth, makePost);
+router.post("/makePost", isAuth, makePost);
 
 // gets
 router.get("/getUserPosts", isAuth, getUserPosts);

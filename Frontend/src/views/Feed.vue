@@ -72,6 +72,7 @@ export default {
         })
         .then((res) => {
           this.userPosts = res.data.posts;
+          console.log(this.userPosts)
         })
         .catch((err) => {
           console.log(err);
@@ -81,9 +82,7 @@ export default {
       axios
         .get(`http://localhost:3000/users/getUser/${this.authId}`)
         .then((res) => {
-          console.log(res.data.user);
           this.name = res.data.user.name;
-          console.log(this.name);
         })
         .catch((err) => {
           console.log(err);
